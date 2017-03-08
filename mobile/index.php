@@ -2,7 +2,7 @@
 include 'FootballData.php';
 ?>
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -27,7 +27,7 @@ include 'FootballData.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Brand</a>
+                <a class="navbar-brand" href="#"><img src="img/fey-logo.png" height="50px" width="auto" </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,13 +51,13 @@ include 'FootballData.php';
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <?php
                 // Create instance of API class
                 $api = new FootballData();
                 // fetch and dump summary data for premier league' season 2015/16
                 $soccerseason = $api->getSoccerseasonById(398);
-                echo "<p><hr><p>"; ?>
+                ?>
 <!--                <h3>Fixtures for the 1st matchday of --><?php //echo $soccerseason->payload->caption; ?><!--</h3>-->
 <!--                <table class="table table-striped">-->
 <!--                    <tr>-->
@@ -112,13 +112,13 @@ include 'FootballData.php';
                 $response = $api->getTeamById($searchQuery->teams[0]->id);
                 $fixtures = $response->getFixtures('')->fixtures;
                 ?>
-                <h3>All home matches of Feyenoord:</h3>
+                <h3>Alle Feyenoordwedstrijden:</h3>
                 <table class="table table-striped">
                     <tr>
-                        <th>HomeTeam</th>
+                        <th>Thuis</th>
                         <th></th>
-                        <th>AwayTeam</th>
-                        <th colspan="3">Result</th>
+                        <th>Uit</th>
+                        <th colspan="3">Resultaat</th>
                     </tr>
                     <?php foreach ($fixtures as $fixture) { ?>
                         <tr>
@@ -166,6 +166,9 @@ include 'FootballData.php';
         <div class="row">
             <div class="col-md-3">
                 <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
+            </div>
+            <div class="col-md-3">
+                <iframe src=”http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/feyenoord/” scrolling="yes" frameborder="0" style="border:none; width:450px; height:80px"></iframe>
             </div>
         </div>
     </div>
