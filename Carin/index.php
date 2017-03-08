@@ -49,7 +49,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
+                <a class="twitter-grid" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
             </div>
         </div>
     </div>
