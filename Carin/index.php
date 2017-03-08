@@ -47,7 +47,7 @@
     </nav>
 
     <a class="twitter-timeline"
-       href="https://twitter.com/Feyenoord"
+       href="https://twitter.com/Feyenoord?lang=nl"
        data-width="300"
        data-height="300">
         Tweets by @Feyenoord
