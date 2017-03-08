@@ -155,7 +155,7 @@ include 'FootballData.php';
 <!--                            <td>--><?php //echo $player->dateOfBirth; ?><!--</td>-->
 <!--                        </tr>-->
 <!--                    --><?php //} ?>
-                </table>
+<!--                </table>-->
             </div>
         </div>
     </div>
@@ -167,9 +167,7 @@ include 'FootballData.php';
             <div class="col-md-3">
                 <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
             </div>
-            <div class="col-md-3">
-                <iframe src=”http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/feyenoord/” scrolling="yes" frameborder="0" style="border:none; width:450px; height:80px"></iframe>
-            </div>
+
         </div>
     </div>
 
