@@ -46,9 +46,9 @@
         </div><!-- /.container-fluid -->
     </nav>
 
-    <div style="width:250px; height: 600px;">
+    <div style="max-height: 360px;">
         <a class="twitter-timeline" href="https://twitter.com/Feyenoord?lang=nl">Feyenoord</a>
-    </div>
+   </div>
 
 
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
