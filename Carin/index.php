@@ -1,5 +1,5 @@
 <?php
-include 'scores/FootballData.php';
+include '/scores/FootballData.php';
 ?>
 <!doctype html>
 <html>
