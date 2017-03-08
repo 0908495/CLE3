@@ -46,9 +46,12 @@
         </div><!-- /.container-fluid -->
     </nav>
 
-    <a class="twitter-timeline" href="https://twitter.com/Feyenoord?lang=nl">Feyenoord</a>
+    <div style="width:250px; height: 600px;">
+        <a class="twitter-timeline" href="https://twitter.com/Feyenoord?lang=nl">Feyenoord</a>
+    </div>
 
 
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
