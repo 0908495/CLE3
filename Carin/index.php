@@ -46,8 +46,13 @@
         </div><!-- /.container-fluid -->
     </nav>
 
-    <a class="twitter-timeline" data-height="450" data-width="250" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
+            </div>
+        </div>
+    </div>
 
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
