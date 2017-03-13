@@ -174,6 +174,9 @@ include 'FootballData.php';
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+
+
+
                     <?php
                     // Create instance of API class
                     $api = new FootballData();
@@ -181,9 +184,11 @@ include 'FootballData.php';
                     $soccerseason = $api->getSoccerseasonById(398);
                     // search for desired team
                     $searchQuery = $api->searchTeam(urlencode("Feyenoord"));
+
                     // var_dump searchQuery and inspect for results
                     $response = $api->getTeamById($searchQuery->teams[0]->id);
                     $fixtures = $response->getFixtures('')->fixtures;
+
                     ?>
                     <h3>Alle Feyenoordwedstrijden:</h3>
                     <table class="table table-striped">
@@ -194,6 +199,32 @@ include 'FootballData.php';
                             <th colspan="3">Resultaat</th>
                         </tr>
                         <?php foreach ($fixtures as $fixture) { ?>
+                            <tr>
+                                <td><?php echo $fixture->homeTeamName; ?></td>
+                                <td>-</td>
+                                <td><?php echo $fixture->awayTeamName; ?></td>
+                                <td><?php echo $fixture->result->goalsHomeTeam; ?></td>
+                                <td>:</td>
+                                <td><?php echo $fixture->result->goalsAwayTeam; ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                    <?php
+                    echo "<p><hr><p>";
+                    // fetch all available upcoming fixtures for the next week and display
+                    $now = new DateTime();
+                    $end = new DateTime(); $end->add(new DateInterval('P1D'));
+                    $response = $api->getFixturesForDateRange($now->format('Y-m-d'), $end->format('Y-m-d'));
+                    ?>
+                    <h3>Upcoming fixtures next 7 days</h3>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>HomeTeam</th>
+                            <th></th>
+                            <th>AwayTeam</th>
+                            <th colspan="3">Result</th>
+                        </tr>
+                        <?php foreach ($response->fixtures as $fixture) { ?>
                             <tr>
                                 <td><?php echo $fixture->homeTeamName; ?></td>
                                 <td>-</td>
