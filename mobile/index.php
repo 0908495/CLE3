@@ -70,9 +70,6 @@ include 'FootballData.php';
             statusChangeCallback(response);
         });
 
-        FB.logout(function(response) {
-// Person is now logged out
-        });
 
     };
 
@@ -96,7 +93,6 @@ include 'FootballData.php';
         });
     }
 
-
 </script>
 
 <!--
@@ -108,8 +104,7 @@ include 'FootballData.php';
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
 
-<fb:logout-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:logout-button>
+
 
 <div id="status">
 </div>
