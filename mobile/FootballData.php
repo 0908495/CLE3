@@ -15,6 +15,7 @@ class FootballData {
     public $config;
     public $baseUri;
     public $reqPrefs = array();
+
         
     public function __construct() {
         $this->config = parse_ini_file('config.ini', true);
@@ -51,7 +52,8 @@ class FootballData {
      * @param DateString 'Y-m-d' $start
      * @param DateString 'Y-m-d' $end
      * @return array of fixture objects
-     */    
+     */
+
     public function getFixturesForDateRange($start, $end) {
         $resource = 'fixtures/?timeFrameStart=' . $start . '&timeFrameEnd=' . $end;
 

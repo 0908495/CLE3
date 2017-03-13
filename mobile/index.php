@@ -19,7 +19,7 @@ include 'FootballData.php';
 <body>
 <script>
     // This is called with the results from from FB.getLoginStatus().
-    function statusChangeCallback(response){
+    function statusChangeCallback(response) {
         console.log('statusChangeCallback');
         console.log(response);
         // The response object is returned with a status field that lets the
@@ -188,7 +188,9 @@ include 'FootballData.php';
                     // var_dump searchQuery and inspect for results
                     $response = $api->getTeamById($searchQuery->teams[0]->id);
                     $fixtures = $response->getFixtures('')->fixtures;
-
+                    $new = array_filter($fixtures, function ($var) {
+                        return ($var -> status == 'FINISHED');
+                    });
                     ?>
                     <h3>Alle Feyenoordwedstrijden:</h3>
                     <table class="table table-striped">
@@ -198,33 +200,7 @@ include 'FootballData.php';
                             <th>Uit</th>
                             <th colspan="3">Resultaat</th>
                         </tr>
-                        <?php foreach ($fixtures as $fixture) { ?>
-                            <tr>
-                                <td><?php echo $fixture->homeTeamName; ?></td>
-                                <td>-</td>
-                                <td><?php echo $fixture->awayTeamName; ?></td>
-                                <td><?php echo $fixture->result->goalsHomeTeam; ?></td>
-                                <td>:</td>
-                                <td><?php echo $fixture->result->goalsAwayTeam; ?></td>
-                            </tr>
-                        <?php } ?>
-                    </table>
-                    <?php
-                    echo "<p><hr><p>";
-                    // fetch all available upcoming fixtures for the next week and display
-                    $now = new DateTime();
-                    $end = new DateTime(); $end->add(new DateInterval('P1D'));
-                    $response = $api->getFixturesForDateRange($now->format('Y-m-d'), $end->format('Y-m-d'));
-                    ?>
-                    <h3>Upcoming fixtures next 7 days</h3>
-                    <table class="table table-striped">
-                        <tr>
-                            <th>HomeTeam</th>
-                            <th></th>
-                            <th>AwayTeam</th>
-                            <th colspan="3">Result</th>
-                        </tr>
-                        <?php foreach ($response->fixtures as $fixture) { ?>
+                        <?php foreach ($new as $fixture) { ?>
                             <tr>
                                 <td><?php echo $fixture->homeTeamName; ?></td>
                                 <td>-</td>
