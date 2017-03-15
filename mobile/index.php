@@ -18,17 +18,30 @@ include 'FootballData.php';
 </head>
 <body>
 
-<img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px;"/>
+<img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px; margin-bottom:30px;"/>
 
-<section style="padding: 30px 0px;">
-    <div class="container" style="background-color: #f7f7f7;">
+
+    <div class="container" style="background-color: #f7f7f7; padding-top: 20px;">
         <div class="row">
             <div class="col-md-12">
-                <h3>Met welk liedje support jij Feyenoord?</h3>
-                <form>
+                <h4>Met welk liedje support jij Feyenoord?</h4>
+                <form style="font-size: 16px;">
                     <input type="radio" name="gender" value="male" checked> Hand In Hand<br>
                     <input type="radio" name="gender" value="female"> Wie Niet Springt<br>
-                    <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!
+                    <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>
+                    <input class="button-custom" type="submit" value="Stem" >
+                </form>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Voorspel de score</h4>
+                <form action="/action_page.php">
+                    <input type="text" name="Feyenoord" value="" placeholder="Thuis">
+                    <input type="text" name="Sparta" value=""  placeholder="Uit"><br>
+                    <input class="button-custom" type="submit" value="Voorspel" >
                 </form>
                 <hr>
             </div>
@@ -56,7 +69,7 @@ include 'FootballData.php';
                 $count = count($new) - 1;
                 $tot = count($new) - 5;
                 ?>
-                <h3>Alle Feyenoordwedstrijden:</h3>
+                <h4>De laatste 5 wedstrijden:</h4>
                 <table class="table table-striped">
                     <tr>
                         <th>Thuis</th>
@@ -99,7 +112,7 @@ include 'FootballData.php';
             </div>
         </div>
     </div>
-</section>
+
 
 <footer>
     <div class="container">
