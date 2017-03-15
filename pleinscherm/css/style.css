@@ -22,7 +22,10 @@ footer {
 }
 
 .karaoke-text {
-    font-size: 15px;
+    font-size: 20px;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.23);
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(112,112,112,1);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(112,112,112,1);
+    box-shadow: 0px 0px 7px 0px rgba(112,112,112,1);
 }

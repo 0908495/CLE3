@@ -22,7 +22,7 @@ include 'FootballData.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <iframe width="100%" height="650px" src="https://www.youtube.com/embed/Hs6vJ8W3H4g?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;loop=1;" frameborder="0" allowfullscreen></iframe>
+                <iframe width="100%" height="750px" src="https://www.youtube.com/embed/Hs6vJ8W3H4g?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;loop=1;" frameborder="0" allowfullscreen></iframe>
             </div>
                 <div class="col-md-4">
                     <img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px; margin-bottom:30px;"/>
@@ -64,6 +64,7 @@ include 'FootballData.php';
                             </tr>
                         <?php } ?>
                     </table>
+                    <hr>
                     <p class="karaoke-text">
                         Hand in hand kameraden<br>
                         Hand in hand voor Feyenoord 1<br>

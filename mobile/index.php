@@ -25,7 +25,7 @@ include 'FootballData.php';
         <div class="row">
             <div class="col-md-12">
                 <h4>Met welk liedje support jij Feyenoord?</h4>
-                <form style="font-size: 16px;">
+                <form action="#" style="font-size: 16px;">
                     <input type="radio" name="gender" value="male" checked> Hand In Hand<br>
                     <input type="radio" name="gender" value="female"> Wie Niet Springt<br>
                     <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>
@@ -38,9 +38,9 @@ include 'FootballData.php';
         <div class="row">
             <div class="col-md-12">
                 <h4>Voorspel de score</h4>
-                <form action="/action_page.php">
-                    <input type="text" name="Feyenoord" value="" placeholder="Thuis">
-                    <input type="text" name="Sparta" value=""  placeholder="Uit"><br>
+                <form action="#">
+                    <input type="number" name="Feyenoord" value="" placeholder="Thuis">
+                    <input type="number" name="Uit" value=""  placeholder="Uit"><br>
                     <input class="button-custom" type="submit" value="Voorspel" >
                 </form>
                 <hr>
