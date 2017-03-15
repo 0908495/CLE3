@@ -191,6 +191,15 @@ include 'FootballData.php';
                     $new = array_filter($fixtures, function ($var) {
                         return ($var -> status == 'FINISHED');
                     });
+                    echo $new[25]->homeTeamName." - ";
+                    echo $new[25]->awayTeamName;
+                    ?><br><?php
+                    echo $new[25]->result->goalsHomeTeam." - ";
+                    echo $new[25]->result->goalsAwayTeam;
+                    $thuis = $new[25]->homeTeamName;
+                    $uit = $new[25]->awayTeamName;
+                    $goalthuis = $new[25]->result->goalsHomeTeam;
+                    $goaluit = $new[25]->result->goalsAwayTeam;
                     ?>
                     <h3>Alle Feyenoordwedstrijden:</h3>
                     <table class="table table-striped">
