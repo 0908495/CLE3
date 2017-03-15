@@ -69,7 +69,6 @@ include 'FootballData.php';
                 <div class="col-md-12">
 
 
-
                     <?php
                     // Create instance of API class
                     $api = new FootballData();
