@@ -24,7 +24,9 @@ include 'FootballData.php';
             <div class="col-md-8">
                 <iframe width="100%" height="700px" src="https://www.youtube.com/embed/KuqYhSAMqH0" frameborder="0" allowfullscreen></iframe>
             </div>
-            <div class="col-md-4">
+                <div class="col-md-4">
+
+
                 <?php
                 // Create instance of API class
                 $api = new FootballData();
@@ -38,7 +40,7 @@ include 'FootballData.php';
                 $fixtures = $response->getFixtures('')->fixtures;
 
                 ?>
-                <h3>Alle Feyenoordwedstrijden:</h3>
+
                 <table class="table table-striped">
                     <tr>
                         <th>Thuis</th>
@@ -48,7 +50,9 @@ include 'FootballData.php';
                     </tr>
                     <?php foreach ($fixtures as $fixture) { ?>
                         <tr>
-                            <td><?php echo $fixture->homeTeamName; ?></td>
+                            <td><?php
+                                echo $fixture->homeTeamName;
+                                ?></td>
                             <td>-</td>
                             <td><?php echo $fixture->awayTeamName; ?></td>
                             <td><?php echo $fixture->result->goalsHomeTeam; ?></td>
