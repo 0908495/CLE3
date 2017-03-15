@@ -22,41 +22,58 @@ include 'FootballData.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <iframe width="100%" height="700px" src="https://www.youtube.com/embed/KuqYhSAMqH0" frameborder="0" allowfullscreen></iframe>
+                <iframe width="100%" height="600px" src="https://www.youtube.com/embed/KuqYhSAMqH0" frameborder="0" allowfullscreen></iframe>
+                <div class="col-md-12">
+                    Top 3
+                </div>
+                <div class="col-md-4">
+                    liedje 1
+                </div>
+                <div class="col-md-4">
+                    liedje 2
+                </div>
+                <div class="col-md-4">
+                    liedje 3
+                </div>
             </div>
-            <div class="col-md-4">
-                <?php
-                // Create instance of API class
-                $api = new FootballData();
-                // fetch and dump summary data for premier league' season 2015/16
-                $soccerseason = $api->getSoccerseasonById(398);
-                // search for desired team
-                $searchQuery = $api->searchTeam(urlencode("Feyenoord"));
+                <div class="col-md-4">
+                    <?php
+                    // Create instance of API class
+                    $api = new FootballData();
+                    // fetch and dump summary data for premier league' season 2015/16
+                    $soccerseason = $api->getSoccerseasonById(398);
+                    // search for desired team
+                    $searchQuery = $api->searchTeam(urlencode("Feyenoord"));
 
-                // var_dump searchQuery and inspect for results
-                $response = $api->getTeamById($searchQuery->teams[0]->id);
-                $fixtures = $response->getFixtures('')->fixtures;
-
-                ?>
-                <h3>Alle Feyenoordwedstrijden:</h3>
-                <table class="table table-striped">
-                    <tr>
-                        <th>Thuis</th>
-                        <th></th>
-                        <th>Uit</th>
-                        <th colspan="3">Resultaat</th>
-                    </tr>
-                    <?php foreach ($fixtures as $fixture) { ?>
+                    // var_dump searchQuery and inspect for results
+                    $response = $api->getTeamById($searchQuery->teams[0]->id);
+                    $fixtures = $response->getFixtures('')->fixtures;
+                    array_slice($fixtures, -3, 3, true);
+                    $new = array_filter($fixtures, function ($var) {
+                        return ($var -> status == 'FINISHED');
+                    });
+                    $count = count($new) - 1;
+                    $tot = count($new) - 5;
+                    ?>
+                    <h3>De laatste 5 wedstrijden:</h3>
+                    <table class="table table-striped">
                         <tr>
-                            <td><?php echo $fixture->homeTeamName; ?></td>
-                            <td>-</td>
-                            <td><?php echo $fixture->awayTeamName; ?></td>
-                            <td><?php echo $fixture->result->goalsHomeTeam; ?></td>
-                            <td>:</td>
-                            <td><?php echo $fixture->result->goalsAwayTeam; ?></td>
+                            <th>Thuis</th>
+                            <th></th>
+                            <th>Uit</th>
+                            <th colspan="3">Resultaat</th>
                         </tr>
-                    <?php } ?>
-                </table>
+                        <?php for ($x = $count; $x >= $tot; $x--) { ?>
+                            <tr>
+                                <td><?php echo $new[$x]->homeTeamName; ?></td>
+                                <td>-</td>
+                                <td><?php echo $new[$x]->awayTeamName; ?></td>
+                                <td><?php echo $new[$x]->result->goalsHomeTeam; ?></td>
+                                <td>:</td>
+                                <td><?php echo $new[$x]->result->goalsAwayTeam; ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
             </div>
         </div>
     </div>
