@@ -18,53 +18,35 @@ include 'FootballData.php';
 </head>
 <body>
 
-<div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img src="img/fey-logo.png" height="50px" width="auto" </a>
-        </div>
+<img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px; margin-bottom:30px;"/>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
 
-<section style="background-color:#f7f7f7; padding: 30px 0px;">
-    <div class="container">
+    <div class="container" style="background-color: #f7f7f7; padding-top: 20px;">
         <div class="row">
             <div class="col-md-12">
-                <h1>Met welk liedje support jij Feyenoord?</h1>
-                <p>..</p>
-                <p>..</p>
+                <h4>Met welk liedje support jij Feyenoord?</h4>
+                <form style="font-size: 16px;">
+                    <input type="radio" name="gender" value="male" checked> Hand In Hand<br>
+                    <input type="radio" name="gender" value="female"> Wie Niet Springt<br>
+                    <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>
+                    <input class="button-custom" type="submit" value="Stem" >
+                </form>
+                <hr>
             </div>
         </div>
-    </div>
-</section>
 
-<section>
-    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Voorspel de score</h4>
+                <form action="/action_page.php">
+                    <input type="text" name="Feyenoord" value="" placeholder="Thuis">
+                    <input type="text" name="Sparta" value=""  placeholder="Uit"><br>
+                    <input class="button-custom" type="submit" value="Voorspel" >
+                </form>
+                <hr>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
 
@@ -87,7 +69,7 @@ include 'FootballData.php';
                 $count = count($new) - 1;
                 $tot = count($new) - 5;
                 ?>
-                <h3>Alle Feyenoordwedstrijden:</h3>
+                <h4>De laatste 5 wedstrijden:</h4>
                 <table class="table table-striped">
                     <tr>
                         <th>Thuis</th>
@@ -106,31 +88,31 @@ include 'FootballData.php';
                         </tr>
                     <?php } ?>
                 </table>
-                <?php
-                $thuis = $new[25]->homeTeamName;
-                $uit = $new[25]->awayTeamName;
-                $goalthuis = $new[25]->result->goalsHomeTeam;
-                $goaluit = $new[25]->result->goalsAwayTeam;
-                ?><br><?php
-                if ($thuis = 'Feyenoord Rotterdam'){
-                    if ($goalthuis >= $goaluit){
-                        echo "Positief";
-                    } else {
-                        echo "Negatief";
-                    }
-                }
-                if ($thuis =! 'Feyenoord Rotterdam'){
-                    if ($goaluit >= $goalthuis){
-                        echo "Positief";
-                    } else {
-                        echo "Negatief";
-                    }
-                }
-                ?>
+<!--                --><?php
+//                $thuis = $new[25]->homeTeamName;
+//                $uit = $new[25]->awayTeamName;
+//                $goalthuis = $new[25]->result->goalsHomeTeam;
+//                $goaluit = $new[25]->result->goalsAwayTeam;
+//                ?><!--<br>--><?php
+//                if ($thuis = 'Feyenoord Rotterdam'){
+//                    if ($goalthuis >= $goaluit){
+//                        echo "Positief";
+//                    } else {
+//                        echo "Negatief";
+//                    }
+//                }
+//                if ($thuis =! 'Feyenoord Rotterdam'){
+//                    if ($goaluit >= $goalthuis){
+//                        echo "Positief";
+//                    } else {
+//                        echo "Negatief";
+//                    }
+//                }
+//                ?>
             </div>
         </div>
     </div>
-</section>
+
 
 <footer>
     <div class="container">

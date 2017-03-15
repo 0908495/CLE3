@@ -1,5 +1,7 @@
 body {
-    background-color: #e51000;
+    /*background-color: #e51000;*/
+    background-color: #be0000;
+    color: #fff;
 }
 
 footer {
@@ -16,5 +18,5 @@ footer {
 }
 
 .container-fluid {
-    padding: 0px;
+    padding-left: 0px;
 }
