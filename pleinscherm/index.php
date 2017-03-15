@@ -18,130 +18,93 @@ include 'FootballData.php';
 </head>
 <body>
 
-<div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img src="img/fey-logo.png" height="50px" width="auto" </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-
-<section style="background-color:#f7f7f7; padding: 30px 0px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Met welk liedje support jij Feyenoord?</h1>
-                <p>..</p>
-                <p>..</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
+                <iframe width="100%" height="600px" src="https://www.youtube.com/embed/KuqYhSAMqH0" frameborder="0" allowfullscreen></iframe>
+                <div class="col-md-12">
+                    Top 3
+                </div>
+                <div class="col-md-4">
+                    liedje 1
+                </div>
+                <div class="col-md-4">
+                    liedje 2
+                </div>
+                <div class="col-md-4">
+                    liedje 3
+                </div>
+            </div>
+                <div class="col-md-4">
+                    <?php
+                    // Create instance of API class
+                    $api = new FootballData();
+                    // fetch and dump summary data for premier league' season 2015/16
+                    $soccerseason = $api->getSoccerseasonById(398);
+                    // search for desired team
+                    $searchQuery = $api->searchTeam(urlencode("Feyenoord"));
 
-
-                <?php
-                // Create instance of API class
-                $api = new FootballData();
-                // fetch and dump summary data for premier league' season 2015/16
-                $soccerseason = $api->getSoccerseasonById(398);
-                // search for desired team
-                $searchQuery = $api->searchTeam(urlencode("Feyenoord"));
-
-                // var_dump searchQuery and inspect for results
-                $response = $api->getTeamById($searchQuery->teams[0]->id);
-                $fixtures = $response->getFixtures('')->fixtures;
-                array_slice($fixtures, -3, 3, true);
-                $new = array_filter($fixtures, function ($var) {
-                    return ($var -> status == 'FINISHED');
-                });
-                $count = count($new) - 1;
-                $tot = count($new) - 5;
-                ?>
-                <h3>Alle Feyenoordwedstrijden:</h3>
-                <table class="table table-striped">
-                    <tr>
-                        <th>Thuis</th>
-                        <th></th>
-                        <th>Uit</th>
-                        <th colspan="3">Resultaat</th>
-                    </tr>
-                    <?php for ($x = $count; $x >= $tot; $x--) { ?>
+                    // var_dump searchQuery and inspect for results
+                    $response = $api->getTeamById($searchQuery->teams[0]->id);
+                    $fixtures = $response->getFixtures('')->fixtures;
+                    array_slice($fixtures, -3, 3, true);
+                    $new = array_filter($fixtures, function ($var) {
+                        return ($var -> status == 'FINISHED');
+                    });
+                    $count = count($new) - 1;
+                    echo $count;
+                    $tot = count($new) - 5;
+                    echo $tot;
+                    for ($x = $count; $x <= $tot; $x--)
+                        echo $new[$x]->homeTeamName." - ";
+                    echo $new[$x]->awayTeamName;
+                    ?><br><?php
+                    echo $new[$x]->result->goalsHomeTeam." - ";
+                    echo $new[$x]->result->goalsAwayTeam;
+                    $thuis = $new[25]->homeTeamName;
+                    $uit = $new[25]->awayTeamName;
+                    $goalthuis = $new[25]->result->goalsHomeTeam;
+                    $goaluit = $new[25]->result->goalsAwayTeam;
+                    ?><br><?php
+                    if ($thuis = 'Feyenoord Rotterdam'){
+                        if ($goalthuis >= $goaluit){
+                            echo "Positief";
+                        } else {
+                            echo "Negatief";
+                        }
+                    }
+                    if ($thuis =! 'Feyenoord Rotterdam'){
+                        if ($goaluit >= $goalthuis){
+                            echo "Positief";
+                        } else {
+                            echo "Negatief.";
+                        }
+                    }
+                    ?>
+                    <h3>Alle Feyenoordwedstrijden:</h3>
+                    <table class="table table-striped">
                         <tr>
-                            <td><?php echo $new[$x]->homeTeamName; ?></td>
-                            <td>-</td>
-                            <td><?php echo $new[$x]->awayTeamName; ?></td>
-                            <td><?php echo $new[$x]->result->goalsHomeTeam; ?></td>
-                            <td>:</td>
-                            <td><?php echo $new[$x]->result->goalsAwayTeam; ?></td>
+                            <th>Thuis</th>
+                            <th></th>
+                            <th>Uit</th>
+                            <th colspan="3">Resultaat</th>
                         </tr>
-                    <?php } ?>
-                </table>
-                <?php
-                $thuis = $new[25]->homeTeamName;
-                $uit = $new[25]->awayTeamName;
-                $goalthuis = $new[25]->result->goalsHomeTeam;
-                $goaluit = $new[25]->result->goalsAwayTeam;
-                ?><br><?php
-                if ($thuis = 'Feyenoord Rotterdam'){
-                    if ($goalthuis >= $goaluit){
-                        echo "Positief";
-                    } else {
-                        echo "Negatief";
-                    }
-                }
-                if ($thuis =! 'Feyenoord Rotterdam'){
-                    if ($goaluit >= $goalthuis){
-                        echo "Positief";
-                    } else {
-                        echo "Negatief";
-                    }
-                }
-                ?>
+                        <?php foreach ($new as $fixture) { ?>
+                            <tr>
+                                <td><?php echo $fixture->homeTeamName; ?></td>
+                                <td>-</td>
+                                <td><?php echo $fixture->awayTeamName; ?></td>
+                                <td><?php echo $fixture->result->goalsHomeTeam; ?></td>
+                                <td>:</td>
+                                <td><?php echo $fixture->result->goalsAwayTeam; ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
             </div>
         </div>
     </div>
 </section>
-
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
-            </div>
-        </div>
-    </div>
-
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- Latest compiled and minified JavaScript -->
