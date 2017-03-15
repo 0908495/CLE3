@@ -123,7 +123,7 @@ include 'FootballData.php';
                     if ($goaluit >= $goalthuis){
                         echo "Positief";
                     } else {
-                        echo "Negatief.";
+                        echo "Negatief";
                     }
                 }
                 ?>
