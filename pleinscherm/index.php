@@ -22,21 +22,12 @@ include 'FootballData.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <iframe width="100%" height="600px" src="https://www.youtube.com/embed/Hs6vJ8W3H4g?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;loop=1;" frameborder="0" allowfullscreen></iframe>
-                <div class="col-md-12">
-                    Top 3
-                </div>
-                <div class="col-md-4">
-                    liedje 1
-                </div>
-                <div class="col-md-4">
-                    liedje 2
-                </div>
-                <div class="col-md-4">
-                    liedje 3
-                </div>
+                <iframe width="100%" height="650px" src="https://www.youtube.com/embed/Hs6vJ8W3H4g?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;loop=1;" frameborder="0" allowfullscreen></iframe>
+
             </div>
                 <div class="col-md-4">
+                    <img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px; margin-bottom:30px;"/>
+                    <hr>
                     <?php
                     // Create instance of API class
                     $api = new FootballData();
