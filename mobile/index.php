@@ -81,14 +81,20 @@ include 'FootballData.php';
                     // var_dump searchQuery and inspect for results
                     $response = $api->getTeamById($searchQuery->teams[0]->id);
                     $fixtures = $response->getFixtures('')->fixtures;
+                    array_slice($fixtures, -3, 3, true);
                     $new = array_filter($fixtures, function ($var) {
                         return ($var -> status == 'FINISHED');
                     });
-                    echo $new[25]->homeTeamName." - ";
-                    echo $new[25]->awayTeamName;
-                    ?><br><?php
-                    echo $new[25]->result->goalsHomeTeam." - ";
-                    echo $new[25]->result->goalsAwayTeam;
+                    $count = count($new) - 1;
+                    echo $count;
+                    $tot = count($new) - 5;
+                    echo $tot;
+                    for ($x = $count; $x <= $tot; $x--)
+                        echo $new[$x]->homeTeamName." - ";
+                        echo $new[$x]->awayTeamName;
+                        ?><br><?php
+                        echo $new[$x]->result->goalsHomeTeam." - ";
+                        echo $new[$x]->result->goalsAwayTeam;
                     $thuis = $new[25]->homeTeamName;
                     $uit = $new[25]->awayTeamName;
                     $goalthuis = $new[25]->result->goalsHomeTeam;
