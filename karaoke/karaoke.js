@@ -1,64 +1,260 @@
-var complete = "iese din scara cer ploios trancan pe el adidasi noi ginitor stanga dreapta gluga neagra strada lui respira adinc puls accelerat si se gandeste ca totul e posibil daca vrea si vrea sa faca bani chitit sa nu dea inapoi plus pus pe fapte mari se temea de facultate ca oricum era primar nimic in rest oare care baiat din SCM calcase pe un drum gresit si se simtea in pierdere mergea sa ridice marfa lua in calcul teapa pentru orice eventualitate pregatit de japca iata ca se apropie de rendez vous vede masina lor se urca-n spate nu scoate un cuvant aveau cel mai bun hit deci slabe sanse sa-i para rau planta acid proba de mostra pipa pacii blana rau timpu sa negociezi un pret discutii apoi stabilesc la 15 ca stiau ca e baiat destept si s-ar fi descurcat cu 4 kile pe 50 de zile i-au zis vezi ca daca te futi cu noi esti mort copile deci pan' la scadente sa ne cauti tu pe noi caz contrar stim unde stau ai tai si dam peste ei si nu uita ne contactezi la date in aceeasi metoda si daca se intampla ceva de rau tu nu suflii o vorba ai inteles am inteles ia tine plasa ma ai grija ce faci baiatu da din cap si pleaca acasa pune pachetu pe birou deja vexat ca ii lipseau 500 pe calculator zicea asta e tre' sa ma misc acum daca vreau sa castig sunt obligat sa risc dar suflu in iaurt oricum Primele zile conexiuni vizite pe la oamenii lui lasa la fiecare cateva sute din bagajul lui paralel dadea lejer cateva zeci dupa doua saptamani panicat ca le da prea incet A trecut o luna a plecat la colectat patrula prin cartiere avea bani de luat acum era presat avea smecheri de cautat baietasi s-au dat la fund si era paranoizat braaa Continua sa numere zilele punea bani pe bani intre timp cateva complicatii s-au solutionat era leapsa pe coco el cu cativa jucatori mici lupta pentru clientela noua toti jmenarii dornici sa produca si s-o duca bine dar fiecare trage pentru el si face ca tine doar daca-i convine unii cautau stabilitate si-au lucrat corect care a cooperat a fost cooptat de smen si la un moment dat s-a implinit o luna jumate omu nostru cu gheata pe el 600 milioane da semnalu pac intalnire de urgenta doar ca de data asta el avea alte pretentii ba va scap de multa mi-o lasati mai ieftin de-atata astia s-au vazut cu banii-n mana si au cantarit situatia nu stiau nici ei ce sa raspunda da au jucat la sigur si au acceptat ca sa nu se-nfunde asta era deja in avantaj in valiza con la 10 alta marfa mai multi bani ca astia nu riscau nimic de fapt tocmai s-au intors din giurgiu cu kilele crescute la bulgari si tot asa timpu trecea lucruri se-ntamplau castiga din ce in ce mai mult asta vroia de fapt cativa interlopi acum sunt la el in brigada si din cand in cand le paseaza verde-n schimb la alba stia cum sa mute stia cum sa opereze sa se fereasca si sa conecteze sutele se concentra mereu pe numere au inceput sa vina sumele urmatoru pas sa stearga toate urmele ca vechii lui tovarasi nu mai stiu nimic de el au senzatia ca a luat-o razna si e plin de el nici nu-si imagineaza-n ce afaceri e bagat asta e situatia si tre sa ramana asa cate-o-data nu-i vina sa creada ca a reusit visul lui de a fi un gangster s-a implinit acum are plantatia lui nu se murdareste pe maini la la gratar cu antidrog o data la 2 saptamani aproape nimeni nu stie ce face de asta bagabontii sunt la modu mars ma cum o arde asta s-a ridicat cica-i baiat adevarat am auzit ca face bani blat si si-a luat septar si stii ceva e cam asa e chiar asa"
-var str = "iese din scara cer ploios"
-var words = complete.split(" ");
-var number = words.length;
+if (typeof document.documentElement.animate === 'function') {
+    var ps = [].slice.call(document.querySelectorAll('p'));
+    var ball = document.getElementById('bouncer');
+    var width = ball.offsetWidth / 2;
+    var y = ball.querySelector('.y');
+    var syllables;
 
-for(i = 0; i < number; i ++ ) {
-    $('.animated-wrap').animate({ }, "linear", function() {
-        $(this).append("<p class=\"wordbyword\">" + words[i] +  "</p>");
+    var score = getScore();
+
+    ps.forEach(function(p) {
+        var split = p.innerHTML.split(' ');
+        for (var i = 0, l = split.length; i < l; ++i) {
+            if (split[i].indexOf('<') !== 0) {
+                split[i] = '<span>' + split[i] + '</span>';
+            }
+        }
+        p.innerHTML = split.join(' ');
+    });
+
+    playByScore();
+} else {
+
+}
+
+function playByScore() {
+    syllables = [].slice.call(document.querySelectorAll('span'));
+
+    var duration = score[0].duration * 2;
+    var starter = syllables[score[0].index].getBoundingClientRect();
+    console.log(starter)
+    syllables[score[0].index].classList.add('bounced');
+
+    var latest = ball.animate([
+        { transform: 'translate(' +  (starter.left - width + starter.width/2) +'px, ' + (starter.top) + 'px) scale(0)', opacity: 1},
+        { transform: 'translate(' +  (starter.left - width + starter.width/2) +'px, ' + (starter.top) + 'px) scale(1)', opacity: 1}
+    ], {
+        duration: duration,
+        fill: 'forwards',
+        easing: 'ease-in-out'
+    });
+    console.log(latest)
+    animateY(duration);
+
+    latest.onfinish = function() {
+        doNextAnimation(1, starter)
+    };
+}
+
+function doNextAnimation(i, prev) {
+    var beat = score[i];
+
+    if (!beat) {
+        theEnd(prev);
+        return false;
+    }
+
+    var next = syllables[beat.index].getBoundingClientRect();
+    bounceBall(prev, next, beat).onfinish = function() {
+        doNextAnimation((i + 1), next);
+    };
+}
+
+function animateY(duration, delay) {
+    y.animate([
+
+        {transform: 'translateY(-2vmin) scaleY(.8)', offset: 0},
+        {transform: 'translateY(-3.6vmin) scaleY(1)', offset: .2},
+        {transform: 'translateY(-10vmin) scaleY(1)', offset: 1}
+    ], {
+        duration: duration / 2,
+        iterations: 2,
+        direction: 'alternate',
+        easing: 'ease-in-out',
+        fill: 'forwards',
+        delay: delay || 0
+    })
+}
+
+function bounceBall(prev, next, beat) {
+    syllables[beat.index].classList.add('bounced');
+    animateY(beat.duration);
+
+    return ball.animate([
+        { transform: 'translate(' + (prev.left - width + prev.width/2) +'px, ' + (prev.top) + 'px)'},
+        { transform: 'translate(' +  (next.left - width + next.width/2) +'px, ' + (next.top) + 'px)'}
+    ], {
+        duration: beat.duration,
+        fill: 'forwards',
+        easing: 'ease-in-out',
+        delay: 0
     });
 }
 
-// setInterval(function() {
-//   var elem = document.getElementById('out');
-//   elem.scrollTop = elem.scrollHeight;
-// }, 1);
-
-var myVar = setInterval(
-    function() {
-        var elem = document.getElementById('out');
-        elem.scrollTop = elem.scrollHeight;
-    }, 300);
-
-
-
-
-
-$(function(){
-    var lastScrollTop = 0, delta = 5;
-    $(window).scroll(function(event){
-        var st = $(this).scrollTop();
-
-        if(Math.abs(lastScrollTop - st) <= delta)
-            return;
-
-        if (st > lastScrollTop){
-            // downscroll code
-            alert("scroll down");
-        } else {
-            // upscroll code
-            alert("scroll up");
-        }
-        lastScrollTop = st;
+function theEnd(prev) {
+    ball.animate([
+        {transform: 'translate(' +  (prev.left - width + prev.width/2) +'px, ' + (prev.top) + 'px) scale(1)'},
+        {transform: 'translate(' +  (prev.left - width + prev.width/2) +'px, ' + (prev.top) + 'px) scale(0)'}
+    ], {
+        duration: 500,
+        easing: 'ease-in-out',
+        fill: 'forwards'
     });
-});
+
+    y.animate([
+        {transform: 'translateY(-2vmin) scaleY(.8)'},
+        {transform: 'translateY(-2vmin) scaleY(1)'}
+    ], {
+        duration: 100,
+        easing: 'ease-in-out',
+        fill: 'forwards'
+    })
+}
+
+/*
+ function playBySpan() {
+ var syllables = [].slice.call(document.querySelectorAll('span'));
+
+ var i = 1;
 
 
-// var vid = document.getElementById("visulLui");
+ var syllable = syllables[0].getBoundingClientRect();
+ var duration = 330;
+ var latest = ball.animate([
+ { transform: 'translate(0px, ' + (syllable.top) + 'px) scale(.5)', opacity: 0},
+ { transform: 'translate(' +  (syllable.x - width + syllable.width/2) +'px, ' + (syllable.top) + 'px) scale(1)', opacity: 1}
+ ], {
+ duration: duration,
+ fill: 'forwards',
+ easing: 'ease-in-out'
+ });
 
-// function setSmallVolume() {
-//     vid.volume = 0.1;
-// }
+ animateY(duration, 0);
 
-// setSmallVolume();
+ while (i < syllables.length - 1) {
+ var syllable = syllables[i].getBoundingClientRect();
+ var next = syllables[i + 1].getBoundingClientRect();
+
+ latest = ball.animate([
+ { transform: 'translate(' + (syllable.x - width + syllable.width/2) +'px, ' + (syllable.top) + 'px)'},
+ { transform: 'translate(' +  (next.x - width + next.width/2) +'px, ' + (next.top) + 'px)'}
+ ], {
+ duration: duration,
+ fill: 'forwards',
+ easing: 'ease-in-out',
+ delay: duration * i
+ });
+ animateY(duration, duration * i);
+ i++;
+ }
+ ball.animate([
+ {transform: 'translate(' +  (next.x - width + next.width/2) +'px, ' + (next.top) + 'px) scale(1)'},
+ {transform: 'translate(' +  (next.x - width + next.width/2) +'px, ' + (next.top) + 'px) scale(0)'}
+ ], {
+ duration: duration,
+ delay: duration * i,
+ easing: 'ease-in-out',
+ fill: 'forwards'
+ });
+ }
+ */
 
 
-// window.onkeypress = function(event) {
-//    if (event.keyCode == 32 &&  !vid.paused) {
-//      vid.pause();
-//    }
-//   else {
-//     vid.play();
-//   }
-// }
 
+
+function getScore() {
+    var mary = [
+        { duration: 300, index: 0 },
+        { duration: 300, index: 1 },
+        { duration: 300, index: 2 },
+        { duration: 300, index: 3 },
+        { duration: 300, index: 4 },
+        { duration: 300, index: 5 },
+        { duration: 300, index: 6 },
+        //{ duration: 300, index: 6 },
+
+        { duration: 600, index: 7 },
+        { duration: 300, index: 8 },
+        { duration: 300, index: 9 },
+        //{ duration: 300, index: 9 },
+        { duration: 600, index: 10 },
+        { duration: 300, index: 11 },
+        { duration: 300, index: 12 },
+        //{ duration: 300, index: 12 },
+
+        { duration: 600, index: 13 },
+        { duration: 300, index: 14 },
+        { duration: 300, index: 15 },
+        { duration: 300, index: 16 },
+        { duration: 300, index: 17 },
+        { duration: 300, index: 18 },
+        { duration: 300, index: 19 },
+
+        { duration: 300, index: 20 },
+        { duration: 300, index: 21 },
+        { duration: 300, index: 22 },
+        { duration: 300, index: 23 },
+        { duration: 300, index: 24 },
+        { duration: 300, index: 25 }
+    ];
+
+
+    var tmbg = [
+        { duration: 200, index: 0 },
+        { duration: 250, index: 1 },
+        { duration: 250, index: 2 },
+        { duration: 250, index: 3 },
+        { duration: 500, index: 4 },
+        { duration: 500, index: 5 },
+        { duration: 500, index: 6 },
+        { duration: 500, index: 7 },
+        { duration: 1000, index: 8 },
+
+        { duration: 250, index: 9 },
+        { duration: 250, index: 10 },
+        { duration: 250, index: 11 },
+        { duration: 500, index: 12 },
+        { duration: 500, index: 13 },
+        { duration: 500, index: 14 },
+        { duration: 500, index: 15 },
+        { duration: 1000, index: 16 },
+
+        { duration: 250, index: 17 },
+        { duration: 250, index: 18 },
+        { duration: 250, index: 19 },
+        { duration: 500, index: 20 },
+        { duration: 500, index: 21 },
+        { duration: 500, index: 22 },
+        { duration: 500, index: 23 },
+        { duration: 500, index: 24 },
+        { duration: 500, index: 25 },
+        { duration: 500, index: 26 },
+
+        { duration: 250, index: 27 },
+        { duration: 250, index: 28 },
+        { duration: 500, index: 29 },
+        { duration: 500, index: 30 },
+        { duration: 250, index: 31 },
+        { duration: 500, index: 32 },
+        { duration: 250, index: 33 },
+        { duration: 500, index: 34 },
+        { duration: 500, index: 35 },
+        { duration: 250, index: 36 },
+        { duration: 1000, index: 37 },
+
+        { duration: 250, index: 38 },
+        { duration: 500, index: 39 },
+        { duration: 250, index: 40 },
+        { duration: 500, index: 41 },
+        { duration: 500, index: 42 },
+        { duration: 500, index: 43 },
+        { duration: 650, index: 44 },
+        { duration: 800, index: 45 },
+        { duration: 800, index: 46 },
+        { duration: 1000, index: 46 },
+        { duration: 1200, index: 46 },
+        { duration: 1400, index: 46 } //*/
+    ];
+
+    return mary;
+}
