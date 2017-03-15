@@ -1,13 +1,13 @@
-$(document).ready(function(){
+var $elements = $('#picOne, #picTwo, #picTree,');
 
-    $(function(){
-
-        $('.container .slides:gt(0)').hide();
-        setInterval(function(){
-            $('.container :first-child').fadeOut(10).next('.slides').fadeIn(10)
-                .end().appendTo('.container');
+function anim_loop(index) {
+    $elements.eq(index).fadeIn(1000, function() {
+        var $self = $(this);
+        setTimeout(function() {
+            $self.fadeOut(1000);
+            anim_loop((index + 1) % $elements.length);
         }, 1000);
-
     });
+}
 
-});
+anim_loop(0); // start with the first elementment

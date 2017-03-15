@@ -1,20 +1,11 @@
-* {
-    font-family: 'Lora', serif;
-    margin: auto;
-    height: 0;
-    text-align: left;
-    color: white;
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+div {
+    display: none;
+    position: absolute;
 }
 
-h4 {
-    font-size: 200%;
-}
+div{
+   color: red;
+    font-family: Oswald;
 
-body {
-    background-color:red;
-}
-
-.container {
-    width: 50%;
-    padding-top: 150px;
 }
