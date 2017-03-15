@@ -85,15 +85,28 @@ include 'FootballData.php';
                         return ($var -> status == 'FINISHED');
                     });
                     $count = count($new) - 1;
-                    echo $count;
                     $tot = count($new) - 5;
-                    echo $tot;
-                    for ($x = $count; $x <= $tot; $x--)
-                        echo $new[$x]->homeTeamName." - ";
-                        echo $new[$x]->awayTeamName;
-                        ?><br><?php
-                        echo $new[$x]->result->goalsHomeTeam." - ";
-                        echo $new[$x]->result->goalsAwayTeam;
+                    ?>
+                    <h3>Alle Feyenoordwedstrijden:</h3>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Thuis</th>
+                            <th></th>
+                            <th>Uit</th>
+                            <th colspan="3">Resultaat</th>
+                        </tr>
+                        <?php for ($x = $count; $x >= $tot; $x--) { ?>
+                        <tr>
+                            <td><?php echo $new[$x]->homeTeamName; ?></td>
+                            <td>-</td>
+                            <td><?php echo $new[$x]->awayTeamName; ?></td>
+                            <td><?php echo $new[$x]->result->goalsHomeTeam; ?></td>
+                            <td>:</td>
+                            <td><?php echo $new[$x]->result->goalsAwayTeam; ?></td>
+                        </tr>
+                    <?php } ?>
+                    </table>
+                    <?php
                     $thuis = $new[25]->homeTeamName;
                     $uit = $new[25]->awayTeamName;
                     $goalthuis = $new[25]->result->goalsHomeTeam;
@@ -114,25 +127,6 @@ include 'FootballData.php';
                         }
                     }
                     ?>
-                    <h3>Alle Feyenoordwedstrijden:</h3>
-                    <table class="table table-striped">
-                        <tr>
-                            <th>Thuis</th>
-                            <th></th>
-                            <th>Uit</th>
-                            <th colspan="3">Resultaat</th>
-                        </tr>
-                        <?php foreach ($new as $fixture) { ?>
-                            <tr>
-                                <td><?php echo $fixture->homeTeamName; ?></td>
-                                <td>-</td>
-                                <td><?php echo $fixture->awayTeamName; ?></td>
-                                <td><?php echo $fixture->result->goalsHomeTeam; ?></td>
-                                <td>:</td>
-                                <td><?php echo $fixture->result->goalsAwayTeam; ?></td>
-                            </tr>
-                        <?php } ?>
-                    </table>
                 </div>
             </div>
         </div>
