@@ -200,6 +200,21 @@ include 'FootballData.php';
                     $uit = $new[25]->awayTeamName;
                     $goalthuis = $new[25]->result->goalsHomeTeam;
                     $goaluit = $new[25]->result->goalsAwayTeam;
+                    ?><br><?php
+                    if ($thuis = 'Feyenoord Rotterdam'){
+                        if ($goalthuis >= $goaluit){
+                            echo "Positief";
+                        } else {
+                            echo "Negatief";
+                        }
+                    }
+                    if ($thuis =! 'Feyenoord Rotterdam'){
+                        if ($goaluit >= $goalthuis){
+                            echo "Positief";
+                        } else {
+                            echo "Negatief";
+                        }
+                    }
                     ?>
                     <h3>Alle Feyenoordwedstrijden:</h3>
                     <table class="table table-striped">
