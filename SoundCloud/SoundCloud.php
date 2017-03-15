@@ -6,21 +6,11 @@
 
 </head>
 <body>
-    <form id="search-new-song" method="post">
-        <label for="inputfield">Text</label>
-        <input type="song" value="" id="inputfield"/>
-        <input type="submit" id="button" value="search song"/>
-    </form>
     <ul>
-        <li><a href="#" class="genre">dubstep</a></li>
-        <li><a href="#" class="genre">Electronic</a></li>
-        <li><a href="#" class="genre">punk</a></li>
-        <li><a href="#" class="genre">Rock</a></li>
-    </ul>
-    <ul>
-        <li><a href="#" class="artist">Kygo</a></li>
-        <li><a href="#" class="artist">The Chainsmokers</a></li>
-        <li><a href="#" class="artist">Throttle</a></li>
+        <li><a href="#" onclick="playSomeSound(dubstep)"class="genre">dubstep</a></li>
+        <li><a href="#" onclick="playSomeSound(Electronic)"class="genre">Electronic</a></li>
+        <li><a href="#" onclick="playSomeSound(Punk)"class="genre">punk</a></li>
+        <li><a href="#" onclick="playSomeSound(Rock)"class="genre">Rock</a></li>
     </ul>
     <div id="target"></div>
 

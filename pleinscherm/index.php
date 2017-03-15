@@ -22,7 +22,7 @@ include 'FootballData.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <iframe width="100%" height="750px" src="https://www.youtube.com/embed/Hs6vJ8W3H4g?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1;loop=1;" frameborder="0" allowfullscreen></iframe>
+                <iframe id="iframe" width="100%" height="750px" src="https://www.youtube.com/embed/Hs6vJ8W3H4g?rel=0&amp;controls=1&amp;showinfo=0;autoplay=1;loop=1; frameborder="0" allowfullscreen ></iframe>
             </div>
                 <div class="col-md-4">
                     <img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px; margin-bottom:30px;"/>
@@ -77,12 +77,17 @@ include 'FootballData.php';
             </div>
         </div>
     </div>
-
+    <ul>
+        <li><a href="#" onclick="playSomeSound(Rock)"class="genre">Rock</a></li>
+    </ul>
+    <div id="target"></div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="karaoke.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script src="main.js"></script>
+
 </body>
 </html>

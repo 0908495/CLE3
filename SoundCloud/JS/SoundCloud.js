@@ -1,14 +1,3 @@
-function playSomeSound(genre) {
-    SC.get('/tracks',{
-        genres: genre,
-        bpm:{
-            from: 100
-        }
-    }, function(tracks) {
-        var random = Math.floor(Math.random()*49);
-        SC.oEmbed(tracks[random].uri, { autoplay: true}, document.getElementById('target'));
-        });
-}
 
 window.onload = function () {
     SC.initialize({
@@ -24,3 +13,15 @@ window.onload = function () {
         }
     }
 };
+
+function playSomeSound(genre) {
+    SC.get('/tracks',{
+        genres: genre,
+        bpm:{
+            from: 100
+        }
+    }, function(tracks) {
+        var random = Math.floor(Math.random()*49);
+        SC.oEmbed(tracks[random].uri, { autoplay: true}, document.getElementById('target'));
+    });
+}
