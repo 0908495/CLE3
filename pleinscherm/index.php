@@ -37,40 +37,70 @@ include 'FootballData.php';
                 </div>
             </div>
                 <div class="col-md-4">
-                <?php
-                // Create instance of API class
-                $api = new FootballData();
-                // fetch and dump summary data for premier league' season 2015/16
-                $soccerseason = $api->getSoccerseasonById(398);
-                // search for desired team
-                $searchQuery = $api->searchTeam(urlencode("Feyenoord"));
+                    <?php
+                    // Create instance of API class
+                    $api = new FootballData();
+                    // fetch and dump summary data for premier league' season 2015/16
+                    $soccerseason = $api->getSoccerseasonById(398);
+                    // search for desired team
+                    $searchQuery = $api->searchTeam(urlencode("Feyenoord"));
 
-                // var_dump searchQuery and inspect for results
-                $response = $api->getTeamById($searchQuery->teams[0]->id);
-                $fixtures = $response->getFixtures('')->fixtures;
+                    // var_dump searchQuery and inspect for results
+                    $response = $api->getTeamById($searchQuery->teams[0]->id);
+                    $fixtures = $response->getFixtures('')->fixtures;
+                    array_slice($fixtures, -3, 3, true);
+                    $new = array_filter($fixtures, function ($var) {
+                        return ($var -> status == 'FINISHED');
+                    });
+                    $count = count($new) - 1;
+                    echo $count;
+                    $tot = count($new) - 5;
+                    echo $tot;
+                    for ($x = $count; $x <= $tot; $x--)
+                        echo $new[$x]->homeTeamName." - ";
+                    echo $new[$x]->awayTeamName;
+                    ?><br><?php
+                    echo $new[$x]->result->goalsHomeTeam." - ";
+                    echo $new[$x]->result->goalsAwayTeam;
+                    $thuis = $new[25]->homeTeamName;
+                    $uit = $new[25]->awayTeamName;
+                    $goalthuis = $new[25]->result->goalsHomeTeam;
+                    $goaluit = $new[25]->result->goalsAwayTeam;
+                    ?><br><?php
+                    if ($thuis = 'Feyenoord Rotterdam'){
+                        if ($goalthuis >= $goaluit){
+                            echo "Positief";
+                        } else {
+                            echo "Negatief";
+                        }
+                    }
+                    if ($thuis =! 'Feyenoord Rotterdam'){
+                        if ($goaluit >= $goalthuis){
+                            echo "Positief";
+                        } else {
+                            echo "Negatief.";
+                        }
+                    }
+                    ?>
 
-                ?>
-
-                <table class="table table-striped">
-                    <tr>
-                        <th>Thuis</th>
-                        <th></th>
-                        <th>Uit</th>
-                        <th colspan="3">Resultaat</th>
-                    </tr>
-                    <?php foreach ($fixtures as $fixture) { ?>
+                    <table class="table table-striped">
                         <tr>
-                            <td><?php
-                                echo $fixture->homeTeamName;
-                                ?></td>
-                            <td>-</td>
-                            <td><?php echo $fixture->awayTeamName; ?></td>
-                            <td><?php echo $fixture->result->goalsHomeTeam; ?></td>
-                            <td>:</td>
-                            <td><?php echo $fixture->result->goalsAwayTeam; ?></td>
+                            <th>Thuis</th>
+                            <th></th>
+                            <th>Uit</th>
+                            <th colspan="3">Resultaat</th>
                         </tr>
-                    <?php } ?>
-                </table>
+                        <?php foreach ($new as $fixture) { ?>
+                            <tr>
+                                <td><?php echo $fixture->homeTeamName; ?></td>
+                                <td>-</td>
+                                <td><?php echo $fixture->awayTeamName; ?></td>
+                                <td><?php echo $fixture->result->goalsHomeTeam; ?></td>
+                                <td>:</td>
+                                <td><?php echo $fixture->result->goalsAwayTeam; ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
             </div>
         </div>
     </div>
