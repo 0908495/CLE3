@@ -19,10 +19,10 @@ include 'FootballData.php';
 <body>
 
 <section>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/KuqYhSAMqH0" frameborder="0" allowfullscreen></iframe>
+                <iframe width="100%" height="700px" src="https://www.youtube.com/embed/KuqYhSAMqH0" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="col-md-4">
                 <?php
