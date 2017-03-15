@@ -64,6 +64,15 @@ include 'FootballData.php';
                             </tr>
                         <?php } ?>
                     </table>
+                    <p class="karaoke-text">
+                        Hand in hand kameraden<br>
+                        Hand in hand voor Feyenoord 1<br>
+                        Geen woorden maar daden<br>
+                        Leve Feyenoord 1<br>
+                        Hand in hand kameraden<br>
+                        Hand in hand voor Feyenoord 1<br>
+                        Geen woorden maar daden<br>
+                        Leve Feyenoord 1</p>
             </div>
         </div>
     </div>
