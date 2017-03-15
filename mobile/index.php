@@ -51,20 +51,19 @@ include 'FootballData.php';
     </div><!-- /.container-fluid -->
 </nav>
 
-<section style="background-color:#f7f7f7; padding: 30px 0px;">
-    <div class="container">
+<section style="padding: 30px 0px;">
+    <div class="container" style="background-color: #f7f7f7;">
         <div class="row">
             <div class="col-md-12">
-                <h1>Met welk liedje support jij Feyenoord?</h1>
-                <p>..</p>
-                <p>..</p>
+                <h3>Met welk liedje support jij Feyenoord?</h3>
+                <form>
+                    <input type="radio" name="gender" value="male" checked> Hand In Hand<br>
+                    <input type="radio" name="gender" value="female"> Wie Niet Springt<br>
+                    <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!
+                </form>
             </div>
         </div>
-    </div>
-</section>
 
-<section>
-    <div class="container">
         <div class="row">
             <div class="col-md-12">
 
@@ -106,27 +105,27 @@ include 'FootballData.php';
                         </tr>
                     <?php } ?>
                 </table>
-                <?php
-                $thuis = $new[25]->homeTeamName;
-                $uit = $new[25]->awayTeamName;
-                $goalthuis = $new[25]->result->goalsHomeTeam;
-                $goaluit = $new[25]->result->goalsAwayTeam;
-                ?><br><?php
-                if ($thuis = 'Feyenoord Rotterdam'){
-                    if ($goalthuis >= $goaluit){
-                        echo "Positief";
-                    } else {
-                        echo "Negatief";
-                    }
-                }
-                if ($thuis =! 'Feyenoord Rotterdam'){
-                    if ($goaluit >= $goalthuis){
-                        echo "Positief";
-                    } else {
-                        echo "Negatief";
-                    }
-                }
-                ?>
+<!--                --><?php
+//                $thuis = $new[25]->homeTeamName;
+//                $uit = $new[25]->awayTeamName;
+//                $goalthuis = $new[25]->result->goalsHomeTeam;
+//                $goaluit = $new[25]->result->goalsAwayTeam;
+//                ?><!--<br>--><?php
+//                if ($thuis = 'Feyenoord Rotterdam'){
+//                    if ($goalthuis >= $goaluit){
+//                        echo "Positief";
+//                    } else {
+//                        echo "Negatief";
+//                    }
+//                }
+//                if ($thuis =! 'Feyenoord Rotterdam'){
+//                    if ($goaluit >= $goalthuis){
+//                        echo "Positief";
+//                    } else {
+//                        echo "Negatief";
+//                    }
+//                }
+//                ?>
             </div>
         </div>
     </div>
