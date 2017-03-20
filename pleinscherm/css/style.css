@@ -21,12 +21,14 @@ footer {
     padding-left: 0px;
 }
 
-.karaoke-text {
-    font-size: 20px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.23);
-    -webkit-box-shadow: 0px 0px 7px 0px rgba(112,112,112,1);
-    -moz-box-shadow: 0px 0px 7px 0px rgba(112,112,112,1);
-    box-shadow: 0px 0px 7px 0px rgba(112,112,112,1);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+#picOne,#picTwo, #picThree, #picFour, #picFive, #picSix{
+    display: none;
+    position: absolute;
+    margin-bottom: 10px;
+    color: white;
+    font-family: Oswald;
+    font-size: 30px;
+    text-align: left;
 }
-.

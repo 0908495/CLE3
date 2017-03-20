@@ -1,13 +1,13 @@
-var $elements = $('#picOne, #picTwo, #picTree,');
+var $elements = $('#picOne, #picTwo, #picThree, #picFour, #picFive, #picSix');
 
 function anim_loop(index) {
-    $elements.eq(index).fadeIn(1000, function() {
+    $elements.eq(index).fadeIn(2000, function() {
         var $self = $(this);
         setTimeout(function() {
-            $self.fadeOut(1000);
+            $self.fadeOut(2000);
             anim_loop((index + 1) % $elements.length);
-        }, 1000);
+        }, 1500);
     });
 }
 
-anim_loop(0); // start with the first elementment
+anim_loop(0);

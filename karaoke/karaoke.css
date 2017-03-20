@@ -1,11 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald);
-div {
+
+#picOne,#picTwo, #picThree, #picFour, #picFive, #picSix{
     display: none;
     position: absolute;
-}
-
-div{
-   color: red;
+    margin-bottom: 10px;
+    color: white;
     font-family: Oswald;
-
+    font-size: 30px;
+    text-align: left;
 }

@@ -65,16 +65,55 @@ include 'FootballData.php';
                         <?php } ?>
                     </table>
                     <hr>
-                    <p class="karaoke-text">
+                    <div id="picOne">
                         Hand in hand kameraden<br>
                         Hand in hand voor Feyenoord 1<br>
                         Geen woorden maar daden<br>
                         Leve Feyenoord 1<br>
+                    </div>
+                        <div id="picTwo">
                         Hand in hand kameraden<br>
                         Hand in hand voor Feyenoord 1<br>
                         Geen woorden maar daden<br>
-                        Leve Feyenoord 1</p>
-            </div>
+                        Leve Feyenoord 1<br>
+                    </div>
+                    <div id="picThree">
+                        Ga je mee naar 't stadion<br>
+                        Naar de ploeg<br>
+                        Van Rood en Wit<br>
+                        Je zoekt een plaatsje in de zon<br>
+                        Waar je zo<br>
+                        Gezellig zit<br>
+                    </div>
+                        <div id="picFour">
+                        Kijk ze komen op het veld<br>
+                        En gejuich uit duizend kelen<br>
+                        Want je staat ervan versteld<br>
+                        Als de sterrenploeg gaat spelen<br>
+                        Dan is altijd wat je hoort<br>
+                        Het lied van Feyenoord<br>
+                        </div>
+
+                    <div id="picFive">
+                        Wat een spanning wat een sfeer<br>
+                        Kijk de bal<br>
+                        Gaat langs de lijn<br>
+                        Heel de Kuip gaat wild te keer<br>
+                        Moet een sprint van Van Persie zijn<br>
+                        Onze Bosvelt heel wat mans<br>
+                    </div>
+
+                        <div id="picSix">
+                        Geeft een bal om niet te missen<br>
+                        Buffel kijk!<br>
+                        Daar komt je kans<br>
+                        Laat de keeper nou eens vissen<br>
+                        Als het doelpunt word gescoord<br>
+                        En dan brult heel Feyenoord<br>
+                        </div>
+                    </div>
+
+                </div>
         </div>
     </div>
     <ul>
