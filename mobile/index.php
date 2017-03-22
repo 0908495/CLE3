@@ -1,21 +1,21 @@
 <?php
+include 'dbh.php';
 session_start();
 include 'FootballData.php';
 //connect to db with dbh.php file
-include 'dbh.php';
+
 
 // if the register btn is clicked do the following
 if (isset($_POST['submit']))
 {
         $home = $_POST['home'];
-        $out = $_POST['out'];
+        $away = $_POST['away'];
+        $users_id = $_SESSION['id'];
 
         // insert scores in db
-        $sql = "INSERT INTO scores (home, out) 
-		VALUES ('$home', '$out')";
+        $sql = "INSERT INTO scores (home, away, users_id) 
+		VALUES ('$home', '$away', '$users_id')";
         mysqli_query($conn, $sql);
-} else {
-    echo "hoi";
 }
 
 
@@ -75,12 +75,12 @@ if (isset($_POST['submit']))
         <div class="row">
             <div class="col-md-12">
                 <h4>Met welk liedje support jij Feyenoord?</h4>
-                <form action="#" style="font-size: 16px;">
-                    <input type="radio" name="gender" value="male" checked> Hand In Hand<br>
-                    <input type="radio" name="gender" value="female"> Wie Niet Springt<br>
-                    <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>
-                    <input class="btn btn-custom" type="submittt" value="Stem" >
-                </form>
+<!--                <form action="#" style="font-size: 16px;">-->
+<!--                    <input type="radio" name="gender" value="male" checked> Hand In Hand<br>-->
+<!--                    <input type="radio" name="gender" value="female"> Wie Niet Springt<br>-->
+<!--                    <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>-->
+<!--                    <input class="btn btn-custom" type="submittt" name=""value="Stem" >-->
+<!--                </form>-->
                 <hr>
             </div>
         </div>
@@ -89,12 +89,11 @@ if (isset($_POST['submit']))
             <div class="col-md-12">
                 <h4>Voorspel de score</h4>
                 <form action="" method="POST">
-                    <input type="number" id="home" name="home" placeholder="Thuis">
-                    <input type="number" id="out" name="out" placeholder="Uit"><br>
-                    <input class="btn btn-custom" type="submit" id="submit" value="Voorspel">
+                    <input type="number" name="home" placeholder="Thuis">
+                    <input type="number" name="away" placeholder="Uit"><br>
+                    <button class="btn btn-custom" type="submit" name="submit">submit</button>
 
                 </form>
-                <?php echo $home ?>
                 <hr>
             </div>
         </div>
