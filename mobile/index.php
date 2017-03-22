@@ -1,5 +1,24 @@
 <?php
+session_start();
 include 'FootballData.php';
+//connect to db with dbh.php file
+include 'dbh.php';
+
+// if the register btn is clicked do the following
+if (isset($_POST['submit']))
+{
+        $home = $_POST['home'];
+        $out = $_POST['out'];
+
+        // insert scores in db
+        $sql = "INSERT INTO scores (home, out) 
+		VALUES ('$home', '$out')";
+        mysqli_query($conn, $sql);
+} else {
+    echo "hoi";
+}
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -60,7 +79,7 @@ include 'FootballData.php';
                     <input type="radio" name="gender" value="male" checked> Hand In Hand<br>
                     <input type="radio" name="gender" value="female"> Wie Niet Springt<br>
                     <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>
-                    <input class="btn btn-custom" type="submit" value="Stem" >
+                    <input class="btn btn-custom" type="submittt" value="Stem" >
                 </form>
                 <hr>
             </div>
@@ -69,19 +88,19 @@ include 'FootballData.php';
         <div class="row">
             <div class="col-md-12">
                 <h4>Voorspel de score</h4>
-                <form action="#">
-                    <input type="number" name="Feyenoord" value="" placeholder="Thuis">
-                    <input type="number" name="Uit" value=""  placeholder="Uit"><br>
-                    <input class="btn btn-custom" type="submit" value="Voorspel" >
+                <form action="" method="POST">
+                    <input type="number" id="home" name="home" placeholder="Thuis">
+                    <input type="number" id="out" name="out" placeholder="Uit"><br>
+                    <input class="btn btn-custom" type="submit" id="submit" value="Voorspel">
+
                 </form>
+                <?php echo $home ?>
                 <hr>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-
-
                 <?php
                 // Create instance of API class
                 $api = new FootballData();
