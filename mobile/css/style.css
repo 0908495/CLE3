@@ -27,6 +27,11 @@ input[type="number"] {
     width: 20%
 }
 
+/*.container {*/
+    /*padding-top:20px;*/
+    /*padding-bottom:20px;*/
+/*}*/
+
 .navbar {
     margin-bottom: 0px;
 }
@@ -42,13 +47,49 @@ input[type="number"] {
     text-shadow: none;
 }
 
-/*@media (min-width: 768px) {*/
-    /*.navbar-brand {*/
-        /*height: 80px;*/
-    /*}*/
+@media (min-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+        width: 100%;
+    }
 
-    /*.navbar-nav > li > a {*/
-        /*padding-top: 30px;*/
-        /*padding-bottom: 30px;*/
-    /*}*/
-/*}*/
+    .navbar-nav > li {
+        float: none;
+        display: inline-block;
+    }
+
+    .logo {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-top: 30px;
+        margin-bottom:30px;
+    }
+}
+
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+
+/* INPUT AREA */
+
+input.login-form {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #b1b1b1;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    margin-right: 0px;
+    margin-left: auto;
+    display:block;
+    background-color: #e51000;
+    color: #fff;
+}
+

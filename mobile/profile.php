@@ -73,7 +73,7 @@ if (isset($_POST['register']))
 </head>
 <body>
 
-<img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px; margin-bottom:30px;"/>
+<img src="img/fey-logo.png" class="logo" height="100px" width="auto"/>
 
 <nav class="navbar navbar-default">
     <div class="container">
@@ -89,7 +89,7 @@ if (isset($_POST['register']))
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="#">Score overzicht</a></li>
                 <?php
@@ -107,7 +107,7 @@ if (isset($_POST['register']))
     </div><!-- /.container -->
 </nav>
 
-<div class="container" style="background-color: #f7f7f7; padding-top: 20px;">
+<div class="container" style="background-color: #f7f7f7; padding-top: 20px; padding-bottom:20px;">
     <div class="row">
         <div class="col-md-12">
 
@@ -116,17 +116,17 @@ if (isset($_POST['register']))
             // Check if someone is logged in - check if session started
             if(isset($_SESSION['id'])){
                 // if someone is logged in show welcome text with name of the logged in user
-                echo '<h1>Welkom '.$_SESSION['username'].'</h1>';
+                echo '<h4>Welkom '.$_SESSION['username'].'</h4>';
             } else {
                 // If nobody is logged in show login and register text title
-                echo '<h1>Inloggen en registreren</h1><br/>
-	<span style="font-size: 22px;">Log in of maak een account aan om een reservering te kunnen plaatsen</span>';
+                echo '<h4>Inloggen en registreren</h4><br/>
+	            <span>Log in of maak een account aan</span>';
             }
             ?>
 
             <h4>Registreren</h4>
             <form action="" method="POST">
-                <input type="text" name="username" placeholder="Gebruikersnaam" class="login-form" ><br>
+                <input type="text" name="username" placeholder="Gebruikersnaam/Email" class="login-form" ><br>
                 <?php
                 if (isset($error_email)) { ?>
                     <div class="alert alert-danger" role="alert"><?= $error_username ?></div>
@@ -141,7 +141,7 @@ if (isset($_POST['register']))
                 if (isset($error_match_pass)) { ?>
                     <div class="alert alert-danger" role="alert"><?= $error_match_pass ?></div>
                 <?php } ?>
-                <button class="btn btn-info btn-custom" type="register" name="register">REGISTREREN</button>
+                <button class="btn btn-custom" type="register" name="register">REGISTREREN</button>
                 <?php
                 if (isset($succes_register)) { ?>
                     <div class="alert alert-success" role="alert"><?= $succes_register ?></div>
@@ -154,14 +154,13 @@ if (isset($_POST['register']))
 
             <h4>Inloggen</h4>
             <form action="" method="POST">
-                <input type="email" name="username" placeholder="Gebruikersnaam" class="login-form" required><br>
+                <input type="email" name="username" placeholder="Gebruikersnaam/Email" class="login-form" required><br>
                 <input type="password" name="password" placeholder="Wachtwoord" class="login-form" required><br>
-                <button class="btn btn-info btn-custom" type="submit" name="submit">INLOGGEN</button>
+                <button class="btn btn-custom" type="submit" name="submit">INLOGGEN</button>
                 <?php
                 if (isset($error)) { ?>
                     <div class="alert alert-danger" role="alert"><?= $error ?></div>
                 <?php } ?>
-                <a href="#" style="font-size:12px; margin-top: 20px;">Wachtwoord vergeten?</a>
             </form>
         </div>
     </div>

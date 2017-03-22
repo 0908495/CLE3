@@ -18,7 +18,7 @@ include 'FootballData.php';
 </head>
 <body>
 
-<img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px; margin-bottom:30px;"/>
+<img src="img/fey-logo.png" class="logo" height="100px" width="auto"/>
 
 <nav class="navbar navbar-default">
     <div class="container">
@@ -34,7 +34,7 @@ include 'FootballData.php';
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="#">Score overzicht</a></li>
                 <?php
@@ -52,7 +52,7 @@ include 'FootballData.php';
     </div><!-- /.container -->
 </nav>
 
-    <div class="container" style="background-color: #f7f7f7; padding-top: 20px;">
+    <div class="container" style="background-color: #f7f7f7; padding-top: 20px; padding-bottom: 20px;">
         <div class="row">
             <div class="col-md-12">
                 <h4>Met welk liedje support jij Feyenoord?</h4>
