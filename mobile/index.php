@@ -36,7 +36,7 @@ include 'FootballData.php';
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar">
                 <li><a href="index.php">Home</a></li>
-                <li><a href="#">Score overzicht</a></li>
+                <li><a href="scores.php">Score overzicht</a></li>
                 <?php
                 if(isset($_SESSION['id'])){ ?>
                     <li><a href="logout.php">Uitloggen</a></li>
@@ -60,7 +60,7 @@ include 'FootballData.php';
                     <input type="radio" name="gender" value="male" checked> Hand In Hand<br>
                     <input type="radio" name="gender" value="female"> Wie Niet Springt<br>
                     <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>
-                    <input class="button-custom" type="submit" value="Stem" >
+                    <input class="btn btn-custom" type="submit" value="Stem" >
                 </form>
                 <hr>
             </div>
@@ -72,7 +72,7 @@ include 'FootballData.php';
                 <form action="#">
                     <input type="number" name="Feyenoord" value="" placeholder="Thuis">
                     <input type="number" name="Uit" value=""  placeholder="Uit"><br>
-                    <input class="button-custom" type="submit" value="Voorspel" >
+                    <input class="btn btn-custom" type="submit" value="Voorspel" >
                 </form>
                 <hr>
             </div>

@@ -91,7 +91,7 @@ if (isset($_POST['register']))
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar">
                 <li><a href="index.php">Home</a></li>
-                <li><a href="#">Score overzicht</a></li>
+                <li><a href="scores.php">Score overzicht</a></li>
                 <?php
                 if(isset($_SESSION['id'])){ ?>
                     <li><a href="logout.php">Uitloggen</a></li>
