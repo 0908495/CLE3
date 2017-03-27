@@ -136,28 +136,33 @@ if (isset($_POST['submit']))
                             <td><?php echo $new[$x]->result->goalsAwayTeam; ?></td>
                         </tr>
                     <?php } ?>
-                </table>
-<!--                --><?php
-                $thuis = $new[25]->homeTeamName;
-//                $uit = $new[25]->awayTeamName;
-//                $goalthuis = $new[25]->result->goalsHomeTeam;
-//                $goaluit = $new[25]->result->goalsAwayTeam;
-//                ?><!--<br>--><?php
-//                if ($thuis = 'Feyenoord Rotterdam'){
-//                    if ($goalthuis >= $goaluit){
-//                        echo "Positief";
-//                    } else {
-//                        echo "Negatief";
-//                    }
-//                }
-//                if ($thuis =! 'Feyenoord Rotterdam'){
-//                    if ($goaluit >= $goalthuis){
-//                        echo "Positief";
-//                    } else {
-//                        echo "Negatief";
-//                    }
-//                }
-//                ?>
+                    <?php
+                    $vibe = "";
+                    $thuis = $new[25]->homeTeamName;
+                    $uit = $new[25]->awayTeamName;
+                    $goalthuis = $new[25]->result->goalsHomeTeam;
+                    $goaluit = $new[25]->result->goalsAwayTeam;
+                    if ($thuis = 'Feyenoord Rotterdam'){
+                        if ($goalthuis >= $goaluit){
+                            $vibe = "goed";
+                            echo"test";
+                        } else {
+                            $vibe = "slecht";
+                            echo"test";
+                        }
+                        $_SESSION['vibe'] = $vibe;
+                    }
+                    if ($thuis =! 'Feyenoord Rotterdam'){
+                        if ($goaluit >= $goalthuis){
+                            $vibe = "goed";
+                            echo"test";
+                        } else {
+                            $vibe = "slecht";
+                            echo "test";
+                        }
+                        $_SESSION['vibe'] = $vibe;
+                    }
+                    ?>
             </div>
         </div>
     </div>

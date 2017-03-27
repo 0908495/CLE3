@@ -1,4 +1,3 @@
-<html>
 <head>
     <meta charset="utf-8">
     <title>SDK playground - Streaming</title>
@@ -34,8 +33,16 @@
 </head>
 <body>
 <?php
-$strings = array('59500241', '192101815', '248545823');
-$track = $strings[array_rand($strings)];
+session_start();
+$vibe = $_SESSION['vibe'];
+echo $vibe;
+if ($vibe == "goed"){
+    $strings = array('59500241', '192101815', '248545823');
+    $track = $strings[array_rand($strings)];
+} else {
+    $strings = array('98849365', '211547947', '123193944');
+    $track = $strings[array_rand($strings)];
+}
 ?>
 <script type="text/javascript">
     SC.initialize({
