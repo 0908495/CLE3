@@ -18,8 +18,8 @@ if (isset($_POST['submit']))
         mysqli_query($conn, $sql);
 }
 
-
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -92,7 +92,6 @@ if (isset($_POST['submit']))
                     <input type="number" name="home" placeholder="Thuis">
                     <input type="number" name="away" placeholder="Uit"><br>
                     <button class="btn btn-custom" type="submit" name="submit">submit</button>
-
                 </form>
                 <hr>
             </div>
