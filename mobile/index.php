@@ -75,12 +75,12 @@ if (isset($_POST['submit']))
         <div class="row">
             <div class="col-md-12">
                 <h4>Met welk liedje support jij Feyenoord?</h4>
-<!--                <form action="#" style="font-size: 16px;">-->
-<!--                    <input type="radio" name="gender" value="male" checked> Hand In Hand<br>-->
-<!--                    <input type="radio" name="gender" value="female"> Wie Niet Springt<br>-->
-<!--                    <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>-->
-<!--                    <input class="btn btn-custom" type="submittt" name=""value="Stem" >-->
-<!--                </form>-->
+                <form action="#" style="font-size: 16px;">
+                    <input type="radio" name="gender" value="male" checked> Hand In Hand<br>
+                    <input type="radio" name="gender" value="female"> Wie Niet Springt<br>
+                    <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>
+                    <input class="btn btn-custom" type="submittt" name=""value="Stem" >
+                </form>
                 <hr>
             </div>
         </div>
@@ -135,46 +135,47 @@ if (isset($_POST['submit']))
                             <td><?php echo $new[$x]->result->goalsAwayTeam; ?></td>
                         </tr>
                     <?php } ?>
-                    <?php
-                    $vibe = "";
-                    $thuis = $new[25]->homeTeamName;
-                    $uit = $new[25]->awayTeamName;
-                    $goalthuis = $new[25]->result->goalsHomeTeam;
-                    $goaluit = $new[25]->result->goalsAwayTeam;
-                    if ($thuis = 'Feyenoord Rotterdam'){
-                        if ($goalthuis >= $goaluit){
-                            $vibe = "goed";
-                            echo"test";
-                        } else {
-                            $vibe = "slecht";
-                            echo"test";
-                        }
-                        $_SESSION['vibe'] = $vibe;
-                    }
-                    if ($thuis =! 'Feyenoord Rotterdam'){
-                        if ($goaluit >= $goalthuis){
-                            $vibe = "goed";
-                            echo"test";
-                        } else {
-                            $vibe = "slecht";
-                            echo "test";
-                        }
-                        $_SESSION['vibe'] = $vibe;
-                    }
-                    ?>
+<!--                    --><?php
+//                    $vibe = "";
+//                    $thuis = $new[25]->homeTeamName;
+//                    $uit = $new[25]->awayTeamName;
+//                    $goalthuis = $new[25]->result->goalsHomeTeam;
+//                    $goaluit = $new[25]->result->goalsAwayTeam;
+//                    if ($thuis = 'Feyenoord Rotterdam'){
+//                        if ($goalthuis >= $goaluit){
+//                            $vibe = "goed";
+//                            echo"test";
+//                        } else {
+//                            $vibe = "slecht";
+//                            echo"test";
+//                        }
+//                        $_SESSION['vibe'] = $vibe;
+//                    }
+//                    if ($thuis =! 'Feyenoord Rotterdam'){
+//                        if ($goaluit >= $goalthuis){
+//                            $vibe = "goed";
+//                            echo"test";
+//                        } else {
+//                            $vibe = "slecht";
+//                            echo "test";
+//                        }
+//                        $_SESSION['vibe'] = $vibe;
+//                    }
+//                    ?>
             </div>
         </div>
     </div>
 
 
-<footer>
-    <div class="container">
+    <footer>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
                 <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
             </div>
         </div>
     </div>
+    </footer>
 
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 

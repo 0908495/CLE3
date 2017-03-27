@@ -16,6 +16,8 @@ if (isset($_POST['submit']))
         $_SESSION['id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
     }
+
+
 }
 
 // if the register btn is clicked do the following
@@ -23,15 +25,14 @@ if (isset($_POST['register']))
 {
     $validate = true;
 
-    // Check if the email input is not a valid emailadress
-    if (!filter_var($_POST['username'], FILTER_VALIDATE_EMAIL))
-    {
-        $error_username = "Vul een geldig email adres in";
+    // Check if the name input contains anything other than lower and uppercase letters
+    if (!preg_match("/^[a-z0-9_-]{3,15}$/",$_POST['username'])){
+        $error_username = "Dit veld mag alleen kleine letters, cijfers en speciale tekens bevatten";
         $validate = false;
     }
 
     // Check if the two password input fields have a different input
-    if($_POST['password']  != $_POST['password-confirm'])
+    if($_POST['password'] != $_POST['password-confirm'])
     {
         $validate = false;
         $error_match_pass = "De ingevoerde wachtwoorden komen niet overeen";
@@ -43,9 +44,11 @@ if (isset($_POST['register']))
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+
         // insert new user in db
         $sql = "INSERT INTO users (username, password) 
-		VALUES ('$username', '$password')";
+		VALUES ('$username', '$passwordHash')";
         mysqli_query($conn, $sql);
 
         $succes_register = "Je bent geregistreerd";
@@ -128,9 +131,9 @@ if (isset($_POST['register']))
 
             <h4>Registreren</h4>
             <form action="" method="POST">
-                <input type="text" name="username" placeholder="Gebruikersnaam/Email" class="login-form" ><br>
+                <input type="text" name="username" placeholder="Gebruikersnaam" class="login-form" ><br>
                 <?php
-                if (isset($error_email)) { ?>
+                if (isset($error_username)) { ?>
                     <div class="alert alert-danger" role="alert"><?= $error_username ?></div>
                 <?php } ?>
                 <input type="password" name="password" placeholder="Wachtwoord" class="login-form" required><br>
@@ -156,7 +159,7 @@ if (isset($_POST['register']))
 
             <h4>Inloggen</h4>
             <form action="" method="POST">
-                <input type="email" name="username" placeholder="Gebruikersnaam/Email" class="login-form" required><br>
+                <input type="text" name="username" placeholder="Gebruikersnaam" class="login-form" required><br>
                 <input type="password" name="password" placeholder="Wachtwoord" class="login-form" required><br>
                 <button class="btn btn-custom" type="submit" name="submit">INLOGGEN</button>
                 <?php
@@ -178,7 +181,7 @@ if (isset($_POST['register']))
             </div>
         </div>
     </div>
-
+</footer>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
