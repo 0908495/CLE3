@@ -1,24 +1,5 @@
 <?php
-include 'dbh.php';
-session_start();
 include 'FootballData.php';
-//connect to db with dbh.php file
-
-
-// if the register btn is clicked do the following
-if (isset($_POST['submit']))
-{
-        $home = $_POST['home'];
-        $away = $_POST['away'];
-        $users_id = $_SESSION['id'];
-
-        // insert scores in db
-        $sql = "INSERT INTO scores (home, away, users_id) 
-		VALUES ('$home', '$away', '$users_id')";
-        mysqli_query($conn, $sql);
-}
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,62 +18,27 @@ if (isset($_POST['submit']))
 </head>
 <body>
 
-<img src="img/fey-logo.png" class="logo" height="100px" width="auto"/>
+<img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px; margin-bottom:30px;"/>
 
-<nav class="navbar navbar-default">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="scores.php">Score overzicht</a></li>
-                <?php
-                if(isset($_SESSION['id'])){ ?>
-                    <li><a href="logout.php">Uitloggen</a></li>
-                    <?php
-                } else { ?>
-                    <li><a href="profile.php">Inloggen</a></li>
-                    <?php
-                }
-                ?>
-
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
-</nav>
-
-    <div class="container" style="background-color: #f7f7f7; padding-top: 20px; padding-bottom: 20px;">
+    <div class="container" style="background-color: #f7f7f7; padding-top: 20px;">
         <div class="row">
             <div class="col-md-12">
-                <h4>Met welk liedje support jij Feyenoord?</h4>
-<!--                <form action="#" style="font-size: 16px;">-->
-<!--                    <input type="radio" name="gender" value="male" checked> Hand In Hand<br>-->
-<!--                    <input type="radio" name="gender" value="female"> Wie Niet Springt<br>-->
-<!--                    <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>-->
-<!--                    <input class="btn btn-custom" type="submittt" name=""value="Stem" >-->
-<!--                </form>-->
-                <hr>
+                <div class='ajax-poll' tclass='poll-background-image' style='width:800px;'></div>
+                <script type="text/javascript" src="/CLE3/stemmen/APSMX-318/APSMX-318/web/jquery.js"></script>
+                <script type="text/javascript" src="/CLE3/stemmen/APSMX-318/APSMX-318/web/ajax-poll.php"></script>
             </div>
         </div>
+
+        <br>
 
         <div class="row">
             <div class="col-md-12">
                 <h4>Voorspel de score</h4>
-                <form action="" method="POST">
-                    <input type="number" name="home" placeholder="Thuis">
-                    <input type="number" name="away" placeholder="Uit"><br>
-                    <button class="btn btn-custom" type="submit" name="submit">submit</button>
-
+                <form action="#">
+                    <input type="number" name="Feyenoord" value="" placeholder="Thuis">
+                    <input type="number" name="Uit" value=""  placeholder="Uit"><br>
+                    <input class="button-custom" type="submit" value="Voorspel" >
                 </form>
                 <hr>
             </div>
@@ -100,6 +46,8 @@ if (isset($_POST['submit']))
 
         <div class="row">
             <div class="col-md-12">
+
+
                 <?php
                 // Create instance of API class
                 $api = new FootballData();
@@ -138,7 +86,7 @@ if (isset($_POST['submit']))
                     <?php } ?>
                 </table>
 <!--                --><?php
-                $thuis = $new[25]->homeTeamName;
+//                $thuis = $new[25]->homeTeamName;
 //                $uit = $new[25]->awayTeamName;
 //                $goalthuis = $new[25]->result->goalsHomeTeam;
 //                $goaluit = $new[25]->result->goalsAwayTeam;
