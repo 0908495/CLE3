@@ -72,18 +72,14 @@ if (isset($_POST['submit']))
 </nav>
 
     <div class="container" style="background-color: #f7f7f7; padding-top: 20px; padding-bottom: 20px;">
-        <div class="row">
-            <div class="col-md-12">
-                <h4>Met welk liedje support jij Feyenoord?</h4>
-<!--                <form action="#" style="font-size: 16px;">-->
-<!--                    <input type="radio" name="gender" value="male" checked> Hand In Hand<br>-->
-<!--                    <input type="radio" name="gender" value="female"> Wie Niet Springt<br>-->
-<!--                    <input type="radio" name="gender" value="other"> Komen Wij Uit Rotterdam?!<br>-->
-<!--                    <input class="btn btn-custom" type="submittt" name=""value="Stem" >-->
-<!--                </form>-->
-                <hr>
-            </div>
-        </div>
+<!--        <div class="row">-->
+<!--            <div class="col-md-12">-->
+<!--                <div class='ajax-poll' tclass='poll-background-image' style='width:800px;'></div>-->
+<!--                <script type="text/javascript" src="/CLE3/stemmen/APSMX-318/APSMX-318/web/jquery.js"></script>-->
+<!--                <script type="text/javascript" src="/CLE3/stemmen/APSMX-318/APSMX-318/web/ajax-poll.php"></script>-->
+<!---->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="row">
             <div class="col-md-12">
@@ -167,16 +163,17 @@ if (isset($_POST['submit']))
     </div>
 
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
-            </div>
-        </div>
-    </div>
-
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!--    <footer>-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-3">-->
+<!--                <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    </footer>-->
+<!---->
+<!--    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>-->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- Latest compiled and minified JavaScript -->
