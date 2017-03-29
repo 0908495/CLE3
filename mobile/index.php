@@ -2,21 +2,81 @@
 include 'dbh.php';
 session_start();
 include 'FootballData.php';
-//connect to db with dbh.php file
 
+    // Create instance of API class
+    $api = new FootballData();
+    // fetch and dump summary data for premier league' season 2015/16
+    $soccerseason = $api->getSoccerseasonById(398);
+    // search for desired team
+    $searchQuery = $api->searchTeam(urlencode("Feyenoord"));
 
-// if the register btn is clicked do the following
-if (isset($_POST['submit']))
-{
+    // var_dump searchQuery and inspect for results
+    $response = $api->getTeamById($searchQuery->teams[0]->id);
+    $fixtures = $response->getFixtures('')->fixtures;
+    array_slice($fixtures, -3, 3, true);
+    $recentMatch = array_filter($fixtures, function ($var) {
+        return ($var -> status == 'FINISHED');
+    });
+    $count = count($recentMatch) - 1;
+    $tot = count($recentMatch) - 5;
+
+    $vibe = "";
+    $homeTeam = $recentMatch[$count]->homeTeamName;
+    $awayTeam = $recentMatch[$count]->awayTeamName;
+    $goalHome = $recentMatch[$count]->result->goalsHomeTeam;
+    $goalAway = $recentMatch[$count]->result->goalsAwayTeam;
+    if ($homeTeam == 'Feyenoord Rotterdam'){
+        if ($goalHome >= $goalAway){
+            $vibe = "goed";
+        } else {
+            $vibe = "slecht";
+        }
+        $_SESSION['vibe'] = $vibe;
+    } else {
+        if ($goalAway >= $goalHome){
+            $vibe = "goed";
+        } else {
+            $vibe = "slecht";
+        }
+        $_SESSION['vibe'] = $vibe;
+    }
+
+    // DB insert votes positive music list
+    if(isset($_POST['votePositive'])){
+        $single = $_POST['single'];
+        $vote = 1;
+        $users_id = $_SESSION['id'];
+
+        // insert scores in db
+        $queryPos = "INSERT INTO positive_vibe_votes (single, vote, users_id) 
+            VALUES ('$single', '$vote', '$users_id')";
+        mysqli_query($conn, $queryPos);
+    }
+
+    // DB insert votes negative music list
+    if(isset($_POST['voteNegative'])){
+        $single = $_POST['single'];
+        $vote = 1;
+        $users_id = $_SESSION['id'];
+
+        // insert scores in db
+        $queryNeg = "INSERT INTO negative_vibe_votes (single, vote, users_id) 
+                VALUES ('$single', '$vote', '$users_id')";
+        mysqli_query($conn, $queryNeg);
+    }
+
+    // DB insert predict match scores
+    if (isset($_POST['submit']))
+    {
         $home = $_POST['home'];
         $away = $_POST['away'];
         $users_id = $_SESSION['id'];
 
         // insert scores in db
         $sql = "INSERT INTO scores (home, away, users_id) 
-		VALUES ('$home', '$away', '$users_id')";
+          VALUES ('$home', '$away', '$users_id')";
         mysqli_query($conn, $sql);
-}
+    }
 
 ?>
 
@@ -72,17 +132,47 @@ if (isset($_POST['submit']))
 </nav>
 
     <div class="container" style="background-color: #f7f7f7; padding-top: 20px; padding-bottom: 20px;">
-<!--        <div class="row">-->
-<!--            <div class="col-md-12">-->
-<!--                <div class='ajax-poll' tclass='poll-background-image' style='width:800px;'></div>-->
-<!--                <script type="text/javascript" src="/CLE3/stemmen/APSMX-318/APSMX-318/web/jquery.js"></script>-->
-<!--                <script type="text/javascript" src="/CLE3/stemmen/APSMX-318/APSMX-318/web/ajax-poll.php"></script>-->
-<!---->
-<!--            </div>-->
-<!--        </div>-->
-
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
+                <?php
+                if($vibe == 'slecht'){
+                    ?>
+                    <h4>Kies een nummer positief</h4>
+                    <form action="" method="POST">
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="single" value="1">Option 1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="single" value="2">Option 2</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="single" value="3">Option 3</label>
+                        </div>
+                        <button class="btn btn-custom" type="submit" name="votePositive">submit</button>
+                    </form>
+                <?php
+                } else {
+                    ?>
+                    <h4>Kies een nummer negatief</h4>
+                    <form action="" method="POST">
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="single" value="1">Option 1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="single" value="2">Option 2</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="single" value="3">Option 3</label>
+                        </div>
+                        <button class="btn btn-custom" type="submit" name="voteNegative">submit</button>
+                    </form>
+                <?php
+                }
+                ?>
+                <hr>
+            </div>
+
+            <div class="col-md-6">
                 <h4>Voorspel de score</h4>
                 <form action="" method="POST">
                     <input type="number" name="home" placeholder="Thuis">
@@ -91,28 +181,12 @@ if (isset($_POST['submit']))
                 </form>
                 <hr>
             </div>
+
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <?php
-                // Create instance of API class
-                $api = new FootballData();
-                // fetch and dump summary data for premier league' season 2015/16
-                $soccerseason = $api->getSoccerseasonById(398);
-                // search for desired team
-                $searchQuery = $api->searchTeam(urlencode("Feyenoord"));
 
-                // var_dump searchQuery and inspect for results
-                $response = $api->getTeamById($searchQuery->teams[0]->id);
-                $fixtures = $response->getFixtures('')->fixtures;
-                array_slice($fixtures, -3, 3, true);
-                $new = array_filter($fixtures, function ($var) {
-                    return ($var -> status == 'FINISHED');
-                });
-                $count = count($new) - 1;
-                $tot = count($new) - 5;
-                ?>
                 <h4>De laatste 5 wedstrijden:</h4>
                 <table class="table table-striped">
                     <tr>
@@ -123,58 +197,30 @@ if (isset($_POST['submit']))
                     </tr>
                     <?php for ($x = $count; $x >= $tot; $x--) { ?>
                         <tr>
-                            <td><?php echo $new[$x]->homeTeamName; ?></td>
+                            <td><?php echo $recentMatch[$x]->homeTeamName; ?></td>
                             <td>-</td>
-                            <td><?php echo $new[$x]->awayTeamName; ?></td>
-                            <td><?php echo $new[$x]->result->goalsHomeTeam; ?></td>
+                            <td><?php echo $recentMatch[$x]->awayTeamName; ?></td>
+                            <td><?php echo $recentMatch[$x]->result->goalsHomeTeam; ?></td>
                             <td>:</td>
-                            <td><?php echo $new[$x]->result->goalsAwayTeam; ?></td>
+                            <td><?php echo $recentMatch[$x]->result->goalsAwayTeam; ?></td>
                         </tr>
                     <?php } ?>
-                    <?php
-                    $vibe = "";
-                    $thuis = $new[25]->homeTeamName;
-                    $uit = $new[25]->awayTeamName;
-                    $goalthuis = $new[25]->result->goalsHomeTeam;
-                    $goaluit = $new[25]->result->goalsAwayTeam;
-                    if ($thuis = 'Feyenoord Rotterdam'){
-                        if ($goalthuis >= $goaluit){
-                            $vibe = "goed";
-                            echo"test";
-                        } else {
-                            $vibe = "slecht";
-                            echo"test";
-                        }
-                        $_SESSION['vibe'] = $vibe;
-                    }
-                    if ($thuis =! 'Feyenoord Rotterdam'){
-                        if ($goaluit >= $goalthuis){
-                            $vibe = "goed";
-                            echo"test";
-                        } else {
-                            $vibe = "slecht";
-                            echo "test";
-                        }
-                        $_SESSION['vibe'] = $vibe;
-                    }
-                    ?>
             </div>
         </div>
     </div>
 
 
+<!---->
 <!--    <footer>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-md-3">-->
-<!--                <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-3" style="margin-top:30px; ">-->
+<!--                    <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>-->
+<!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
-<!--    </div>-->
 <!--    </footer>-->
-<!---->
-<!--    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>-->
-
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

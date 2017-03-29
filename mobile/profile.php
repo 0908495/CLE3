@@ -37,7 +37,7 @@ if (isset($_POST['register']))
 
     // Check if the name input contains anything other than lower and uppercase letters
     if (!preg_match("/^[a-z0-9_-]{3,15}$/",$_POST['username'])){
-        $error_username = "Dit veld mag alleen kleine letters, cijfers en speciale tekens bevatten";
+        $error_username = "Dit veld mag alleen kleine letters, cijfers, '-' en '_' bevatten";
         $validate = false;
     }
 
@@ -51,8 +51,8 @@ if (isset($_POST['register']))
     // if all $validate variables are true do an insert in db
     if($validate)
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username = mysqli_real_escape_string($_POST['username']);
+        $password = mysqli_real_escape_string($_POST['password']);
 
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
