@@ -2,23 +2,33 @@
 include 'dbh.php';
 session_start();
 
+// if login form submitted do the following
 if (isset($_POST['submit']))
 {
     $username 	= mysqli_real_escape_string($conn, $_POST['username']) ;
     $password 	= mysqli_real_escape_string($conn, $_POST['password']);
 
-    $sql = "SELECT id, username FROM users WHERE username='$username' AND password='$password'";
-    $result = mysqli_query($conn, $sql);
+    $query = "SELECT password FROM users WHERE username='$username'";
+    $resultQuery  = mysqli_query($conn, $query);
 
-    if(!$row = mysqli_fetch_assoc($result)){
-        $error = "Je bent gebruikersnaam of wachtwoord is onjuist";
-    }	else {
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['username'] = $row['username'];
+    $row = mysqli_fetch_assoc($resultQuery);
+    $dbPass = $row['password'];
+
+    // compare password with hash database password
+    if(password_verify($password, $dbPass)){
+        $sql = "SELECT id, username FROM users WHERE username='$username'";
+        $result = mysqli_query($conn, $sql);
+
+        if(!$row = mysqli_fetch_assoc($result)){
+            $error = "Je bent gebruikersnaam of wachtwoord is onjuist";
+        }	else {
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['username'] = $row['username'];
+        }
     }
-
-
 }
+
+
 
 // if the register btn is clicked do the following
 if (isset($_POST['register']))
@@ -44,7 +54,7 @@ if (isset($_POST['register']))
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $passwordHash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         // insert new user in db
         $sql = "INSERT INTO users (username, password) 
@@ -182,11 +192,11 @@ if (isset($_POST['register']))
         </div>
     </div>
 </footer>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
 
