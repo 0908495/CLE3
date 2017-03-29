@@ -1,3 +1,4 @@
+<html>
 <head>
     <meta charset="utf-8">
     <title>SDK playground - Streaming</title>
@@ -37,7 +38,8 @@ session_start();
 $vibe = $_SESSION['vibe'];
 echo $vibe;
 if ($vibe == "goed"){
-    $strings = array('59500241', '192101815', '248545823');
+    $strings = array('20230709','17174641');
+//    $strings = array('59500241', '192101815', '248545823');
     $track = $strings[array_rand($strings)];
 } else {
     $strings = array('98849365', '211547947', '123193944');
@@ -49,11 +51,21 @@ if ($vibe == "goed"){
         client_id: 'g0ATeGIhNpgzYpEKeegATafCvns2N2Gc'
     });
     //'/tracks/' + track.id
+
     SC.stream('/tracks/' + <?= $track ?>).then(function(player){
         player.play();
+        player.on('finish', function() {
+            console.log('hoi');
+        });
     }).catch(function(){
         console.log(arguments);
     });
+
+
+//    player.on('finish', function() {
+//        console.log('hoi');
+//    });
+
 </script>
 </body>
 </html>
