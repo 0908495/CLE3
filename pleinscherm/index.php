@@ -1,5 +1,6 @@
 <?php
 include 'FootballData.php';
+include ("../soundcloud/streaming.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,7 +24,6 @@ include 'FootballData.php';
         <div class="row">
             <div class="col-md-8">
                 <iframe id="iframe" width="100%" height="750px" src="https://www.youtube.com/embed/Hs6vJ8W3H4g?rel=0&amp;controls=1&amp;showinfo=0;autoplay=1;loop=1; frameborder="0" allowfullscreen ></iframe>
-                <?php include("../soundcloud/compare.php"); ?>
             </div>
                 <div class="col-md-4">
                     <img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px; margin-bottom:30px;"/>
@@ -117,9 +117,6 @@ include 'FootballData.php';
                 </div>
         </div>
     </div>
-    <ul>
-        <li><a href="#" onclick="playSomeSound(Rock)"class="genre">Rock</a></li>
-    </ul>
     <div id="target"></div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
