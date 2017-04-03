@@ -41,8 +41,10 @@ if ($vibe == "goed"){
     $strings = array('20230709','17174641');
 //    $strings = array('59500241', '192101815', '248545823');
     $track = $strings[array_rand($strings)];
+    $hoi = 1;
 } else {
-    $strings = array('98849365', '211547947', '123193944');
+    $strings = array('20230709','17174641');
+//    $strings = array('98849365', '211547947', '123193944');
     $track = $strings[array_rand($strings)];
 }
 ?>
@@ -55,7 +57,10 @@ if ($vibe == "goed"){
     SC.stream('/tracks/' + <?= $track ?>).then(function(player){
         player.play();
         player.on('finish', function() {
-            console.log('hoi');
+            <?php
+            $finish = 1;
+            $_SESSION['finish'] = $finish;
+            ?>
         });
     }).catch(function(){
         console.log(arguments);
