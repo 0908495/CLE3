@@ -26,4 +26,10 @@ echo $row3['total3'];
 
 echo (max($row1['total1'], $row2['total2'], $row3['total3']));
 
+if ($row1['total1'] == (max($row1['total1'], $row2['total2'], $row3['total3']))){
+    echo 'Liedje 1 wint';
+} elseif ($row2['total2'] == (max($row1['total1'], $row2['total2'], $row3['total3']))){
+    echo 'Liedje 2 wint';
+} else
+    echo 'Liedje 3 wint';
 ?>
