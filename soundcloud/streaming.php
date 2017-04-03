@@ -35,19 +35,9 @@
 <body>
 <?php
 session_start();
-$vibe = $_SESSION['vibe'];
-echo $vibe;
-if ($vibe == "goed"){
-    $strings = array('20230709','17174641');
-//    $strings = array('59500241', '192101815', '248545823');
-    $track = $strings[array_rand($strings)];
-    $hoi = 1;
-} else {
-    $strings = array('20230709','17174641');
-//    $strings = array('98849365', '211547947', '123193944');
-    $track = $strings[array_rand($strings)];
-}
+$track = 20230709;
 ?>
+
 <script type="text/javascript">
     SC.initialize({
         client_id: 'g0ATeGIhNpgzYpEKeegATafCvns2N2Gc'
@@ -57,10 +47,7 @@ if ($vibe == "goed"){
     SC.stream('/tracks/' + <?= $track ?>).then(function(player){
         player.play();
         player.on('finish', function() {
-            <?php
-            $finish = 1;
-            $_SESSION['finish'] = $finish;
-            ?>
+            console.log("Hoi");
         });
     }).catch(function(){
         console.log(arguments);
