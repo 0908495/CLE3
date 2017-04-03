@@ -166,11 +166,35 @@ include 'FootballData.php';
                         </div>
                         <button class="btn btn-custom" type="submit" name="voteNegative">submit</button>
                     </form>
+
+
                 <?php
+
                 }
                 ?>
                 <hr>
             </div>
+
+            <script>
+                window.fbAsyncInit = function() {
+                    FB.init({
+                        appId      : 'your-app-id',
+                        xfbml      : true,
+                        version    : 'v2.8'
+                    });
+                    FB.AppEvents.logPageView();
+                };
+
+                (function(d, s, id){
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {return;}
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+
+            <div class="fb-page" data-href="https://www.facebook.com/Feyenoord-CMGT-780217648793081/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Feyenoord-CMGT-780217648793081/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Feyenoord-CMGT-780217648793081/">Feyenoord CMGT</a></blockquote></div>
 
             <div class="col-md-6">
                 <h4>Voorspel de score</h4>
