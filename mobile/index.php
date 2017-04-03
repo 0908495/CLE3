@@ -133,6 +133,12 @@ include 'FootballData.php';
 
     <div class="container" style="background-color: #f7f7f7; padding-top: 20px; padding-bottom: 20px;">
         <div class="row">
+            <div class="col-md-12" style="text-align:center; padding: 10px;">
+                <h1>Feyeboard</h1>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 <?php
                 if($vibe == 'slecht'){
@@ -244,7 +250,7 @@ include 'FootballData.php';
 <!--            </div>-->
 <!--        </div>-->
 <!--    </footer>-->
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!--    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

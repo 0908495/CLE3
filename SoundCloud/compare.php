@@ -22,16 +22,20 @@ $sql2 = "select SUM(vote) AS total3 from positive_vibe_votes WHERE single='3'";
 $result3 = mysqli_query($conn, $sql2);
 $row3 = mysqli_fetch_assoc($result3);
 
-echo $row3['total3'];
+//echo $row3['total3'];
+//
+//echo (max($row1['total1'], $row2['total2'], $row3['total3']));
+?>
 
-echo (max($row1['total1'], $row2['total2'], $row3['total3']));?>
+
 <script type="text/javascript">
-setInterval(function(){<?php
+var testje = setInterval(function(){<?php
+
     $finish = $_SESSION['finish'];
-    echo $finish;
-    if ($finish == 1) {
+
+    if ($finish) {
         if ($row1['total1'] == (max($row1['total1'], $row2['total2'], $row3['total3']))) {
-            echo 'Liedje 1 wint';
+            echo "Liedje 1 wint";
         } elseif ($row2['total2'] == (max($row1['total1'], $row2['total2'], $row3['total3']))) {
             echo 'Liedje 2 wint';
         } else {
