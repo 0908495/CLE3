@@ -27,7 +27,7 @@ class CTClass extends CTClassBase
 		$poll->attr( "msg-vote", "Stem" );
 		$poll->attr( "msg-select-one", "Kies een nummer!" );
 		$poll->attr( "msg-already-voted", "Je hebt al gestemd " );
-		$poll->attr( "msg-view-result", "Beijk resultaten" );
+		$poll->attr( "msg-view-result", "Bekijk resultaten" );
 		$poll->attr( "msg-thank-you", "Bedankt voor het stemmen" );
 		$poll->attr( "msg-return", "Terug" );
 		$poll->attr( "msg-total", "Totaal" );

@@ -69,7 +69,7 @@ $style=<<<_EOM_
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	-khtml-border-radius: 10px;
-	border-radius: 50px;
+	border-radius: 60px;
 
 	background-color:rgba(0,0,0,0.8);
 }
@@ -94,10 +94,9 @@ $style=<<<_EOM_
 	margin-bottom:20px;
 	padding:0;
 	text-align:center;
-
-	color:#ffe;
-	font-weight:bold;
-	font-size:18px;
+    color:red;
+    font-weight: bold;
+    font-size:25px;
 	line-height:20px;
 }
 
@@ -110,12 +109,13 @@ $style=<<<_EOM_
 }
 
 .%tclass% .poll-table td {
+
 	margin:0;
 	padding:0;
-	font-size:16px;
-	color:white;
+	font-size:25px;
+	color: white;
 	*border:1px solid transparent;
-	vertical-align:middle;
+	vertredical-align:middle;
 }
 
 .%tclass% .poll-table td.poll-caption-cont {
@@ -140,11 +140,11 @@ $style=<<<_EOM_
 	margin:0 auto;
 	padding:0;
 	width:150px;
-	font-size:20px;
-	font-weight:bold;
+	font-size:25px;
+
 	border-radius:10px;
-	color:white;
-	text-shadow:3px 3px 3px black;
+	color:red;
+	font-weight: bold;
 	border:3px solid rgba(255,255,255,0.0);
 	cursor:pointer;
 }
@@ -163,14 +163,14 @@ $style=<<<_EOM_
 .%tclass% .poll-link:link,
 .%tclass% .poll-link:visited {
 	cursor:pointer;
-	color:white;
-	font-size:12px;
+	color:yellow;
+	font-size:25px;
 	text-decoration:none;
 }
 
 .%tclass% .poll-link:hover,
 .%tclass% .poll-link:active {
-	color:yellow;
+	color:white;
 	text-decoration:underline;
 }
 
