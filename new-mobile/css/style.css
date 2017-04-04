@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
+body {
+    /*background-color: #e51000;*/
+}
+
+
+
+hr {
+    margin-top: 70px;
+}
+
+input[type="number"] {
+    border: 0px;
+    padding: 5px;
+    width: 20%
+}
+
+.quoteArea {
+    background-image: url('http://kingofwallpapers.com/feyenoord/feyenoord-008.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: auto;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    margin-top: 50px;
+    color: #fff;
+}
+
+.header {
+    background-image: url('https://www.feyenoord.nl/templates/img/matchday/achtergrond_matchday_kuip_01.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: auto;
+}
+
+.head-title {
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+    font-size: 80px;
+    text-align: center;
+    color: #fff;
+    font-family: 'Anton', sans-serif;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+
+
+
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 200px;
+    height: auto;
+    margin-top: 200px;
+}
+
+.voting-titles {
+    text-align:center;
+    margin-bottom: 20px;
+}
+
+.footer {
+    background-image: url('../img/achtergrond_matchday_kuip_01.png');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* INPUT AREA */
+
+input.login-form {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #b1b1b1;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    margin-right: 0px;
+    margin-left: auto;
+    display:block;
+    background-color: #e51000;
+    color: #fff;
+}
+
+.numberVote {
+    background-color: #f7f7f7;
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .header {
+        height: 40vh;
+    }
+
+    .head-title {
+        font-size: 50px;
+    }
+
+    .timeline-Widget {
+        margin-top: 20px;
+    }
+
+    .logo {
+        width: 90px;
+        height: auto;
+        margin-top: 30px;
+    }
+}

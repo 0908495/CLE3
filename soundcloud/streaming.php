@@ -24,15 +24,12 @@ if($vibe == 'goed') {
 
 
     if ($row1['total1'] == (max($row1['total1'], $row2['total2'], $row3['total3']))) {
-        echo "Liedje 1 wint";
         $track = 123193944;
         $_SESSION['track'] = $track;
     } elseif ($row2['total2'] == (max($row1['total1'], $row2['total2'], $row3['total3']))) {
-        echo 'Liedje 2 wint';
         $track = 211547947;
         $_SESSION['track'] = $track;
     } else {
-        echo 'Liedje 3 wint';
         $track = 192101815;
         $_SESSION['track'] = $track;
     }
@@ -57,15 +54,12 @@ if($vibe == 'goed') {
 
 
     if ($row1['total1'] == (max($row1['total1'], $row2['total2'], $row3['total3']))) {
-        echo "Liedje 1 wint";
         $track = 98849365;
         $_SESSION['track'] = $track;
     } elseif ($row2['total2'] == (max($row1['total1'], $row2['total2'], $row3['total3']))) {
-        echo 'Liedje 2 wint';
         $track = 16266948;
         $_SESSION['track'] = $track;
     } else {
-        echo 'Liedje 3 wint';
         // hand in hand
         $track = 59500241;
         $_SESSION['track'] = $track;
@@ -81,34 +75,6 @@ $track = $_SESSION['track'];
     <meta charset="utf-8">
     <title>SDK playground - Streaming</title>
     <script type="text/javascript" src="http://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
-    <style media="screen">
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: sans-serif;
-        }
-
-        input {
-            font-size: 20px;
-        }
-
-        #info {
-            display: none;
-        }
-
-        input, p {
-            width: 90%;
-            margin-bottom: 10px;
-            margin-top: 0;
-        }
-
-        @media (min-width: 500px) {
-            input, p {
-                width: 500px;
-            }
-        }
-    </style>
 </head>
 <body>
 <script type="text/javascript">
