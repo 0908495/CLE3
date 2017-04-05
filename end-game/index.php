@@ -1,8 +1,7 @@
 <?php
 include 'dbh.php';
-session_start();
 include 'FootballData.php';
-
+include '../soundcloud/streaming.php';
 
 
 ?>
@@ -51,7 +50,7 @@ include 'FootballData.php';
                     $tot = count($new) - 5;
                     ?>
                     <h3>De laatste 5 wedstrijden:</h3>
-                    <table class="table table-striped">
+                    <table class="table table-striped" style="font-size: 16px;">
                         <tr>
                             <th>Thuis</th>
                             <th></th>

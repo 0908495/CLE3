@@ -24,6 +24,7 @@ include ("../soundcloud/streaming.php");
         <div class="row">
             <div class="col-md-8">
                 <iframe id="iframe" width="100%" height="750px" src="https://www.youtube.com/embed/Hs6vJ8W3H4g?rel=0&amp;controls=1&amp;showinfo=0;autoplay=1;loop=1; frameborder="0" allowfullscreen ></iframe>
+            <h4 style="padding:10px 20px 10px 20px; font-weight: 300;">Stem via <b>localhost/cle3/new-mobile/</b> op jouw supporterslied en voorspel de scores!</h4>
             </div>
                 <div class="col-md-4">
                     <img src="img/fey-logo.png" height="100px" width="auto" style="margin-left: auto; margin-right: auto; display: block; margin-top: 30px; margin-bottom:30px;"/>
@@ -47,7 +48,7 @@ include ("../soundcloud/streaming.php");
                     $tot = count($new) - 5;
                     ?>
                     <h3>De laatste 5 wedstrijden:</h3>
-                    <table class="table table-striped">
+                    <table class="table table-striped" style="font-size: 16px;">
                         <tr>
                             <th>Thuis</th>
                             <th></th>
