@@ -130,7 +130,7 @@ if (isset($_POST['submit']))
     </nav>
     <div class="col-md-12 head-title">
         <img src="img/fey-logo.png" class="logo" height="100px" width="auto"/>
-        <span>Feyeboard - home</span>
+        <span>Feyeboard</span>
     </div>
 </div>
 
@@ -144,49 +144,91 @@ if (isset($_POST['submit']))
     <div class="row">
         <div class="col-md-6">
             <?php
-            if($vibe == 'goed'){
-                ?>
-                <h3 class="voting-titles">Kies een nummer</h3>
-                <div class="col-md-4 numberVote">
-                <form action="" method="POST">
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="single" value="1">Option 1</label>
+            if(isset($_SESSION['id'])) {
+                if ($vibe == 'goed') {
+                    ?>
+                    <h3 class="voting-titles">Kies een nummer</h3>
+                    <div class="col-md-4 numberVote">
+                        <form action="" method="POST">
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="1">Option 1</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="2">Option 2</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="3">Option 3</label>
+                            </div>
                     </div>
-
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="single" value="2">Option 2</label>
-                    </div>
-
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="single" value="3">Option 3</label>
-                    </div>
-                </div>
                     <button class="btn btn-custom" type="submit" name="votePositive">submit</button>
-                </form>
+                    </form>
 
-                <?php
-            } else {
-                ?>
-                <h3 class="voting-titles">Kies een nummer</h3>
+                    <?php
+                } else {
+                    ?>
+                    <h3 class="voting-titles">Kies een nummer</h3>
 
-                <div class="col-md-4 numberVote">
-                <form action="" method="POST">
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="single" value="1">Option 1</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="single" value="2">Option 2</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="single" value="3">Option 3</label>
-                    </div>
+                    <div class="col-md-4 numberVote">
+                        <form action="" method="POST">
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="1">Feyenoord we blijven
+                                    gaan</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="2">Super Feyenoord</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="3">Hand in hand</label>
+                            </div>
                     </div>
                     <button class="btn btn-custom" type="submit" name="voteNegative">submit</button>
-                </form>
+                    </form>
+                <?php }
+            } else {
+                if ($vibe == 'goed') {
+                    ?>
+                    <h3 class="voting-titles">Kies een nummer</h3>
+                    <div class="col-md-4 numberVote">
+                        <form action="" method="POST">
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="1" disabled>Option 1</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="2" disabled>Option 2</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="3" disabled>Option 3</label>
+                            </div>
+                    </div>
+                    <button class="btn btn-custom" type="submit" name="votePositive" disabled>submit</button>
+                    <a href="/profile.php"><button class="btn btn-custom bounce" type="submit" name="inloggen" style="margin-top: 20px;">inloggen om te kunnen stemmen</button></a>
+                    </form>
 
-                <?php
-            }
-            ?>
+                    <?php
+                } else {
+                    ?>
+                    <h3 class="voting-titles">Kies een nummer</h3>
+
+                    <div class="col-md-4 numberVote">
+                        <form action="" method="POST">
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="1" disabled>Feyenoord we blijven
+                                    gaan</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="2" disabled>Super Feyenoord</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="vote" name="single" value="3" disabled>Hand in hand</label>
+                            </div>
+                    </div>
+                    <button class="btn btn-custom" type="submit" name="voteNegative" disabled>submit</button>
+                    <a href="/profile.php"><button class="btn btn-custom bounce" type="submit" name="inloggen" style="margin-top: 20px;">inloggen om te kunnen stemmen</button></a>
+                    </form>
+                <?php }
+            }?>
+
+
         </div>
         <?php if(isset($_SESSION['id'])){?>
         <div class="col-md-6">
@@ -200,11 +242,13 @@ if (isset($_POST['submit']))
         <?php } else { ?>
             <div class="col-md-6">
                 <h3 class="voting-titles">Voorspel de score</h3>
+
                 <form action="" method="POST">
-                    <input type="number" name="home" placeholder="Thuis">
-                    <input type="number" name="away" placeholder="Uit"><br>
-                    <button class="btn btn-custom" type="submit" name="submit" style="margin-top: 20px;">submit</button>
+                    <input type="number" name="home" placeholder="Thuis" disabled>
+                    <input type="number" name="away" placeholder="Uit" disabled><br>
+                    <button class="btn btn-custom" type="submit" name="submit" style="margin-top: 20px;" disabled>submit</button>
                 </form>
+                <a href="/profile.php"><button class="btn btn-custom bounce" type="submit" name="inloggen" style="margin-top: 20px;">inloggen om te kunnen stemmen</button></a>
             </div>
         <?php } ?>
     </div>
@@ -212,7 +256,7 @@ if (isset($_POST['submit']))
 
 <div class="container-fluid quoteArea">
 <div class="container" style="text-align:center;">
-    <h2>"Lorem ipsum dolor sit amet, consectetuer adipiscing elit."</h2>
+    <h2>"Wie met Feyenoord is groot gebracht, is niet meer klein te krijgen."</h2>
 </div>
 </div>
 

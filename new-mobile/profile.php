@@ -121,7 +121,7 @@ if (isset($_POST['register']))
     </nav>
     <div class="col-md-12 head-title">
         <img src="img/fey-logo.png" class="logo" height="100px" width="auto"/>
-        <span>Feyeboard - inloggen</span>
+        <span>Feyeboard</span>
     </div>
 </div>
 <div class="container">
