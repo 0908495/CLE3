@@ -1,7 +1,7 @@
 <?php
 include 'dbh.php';
 session_start();
-
+include 'FootballData.php';
 // if login form submitted do the following
 if (isset($_POST['submit']))
 {
@@ -121,67 +121,44 @@ if (isset($_POST['register']))
     </nav>
     <div class="col-md-12 head-title">
         <img src="img/fey-logo.png" class="logo" height="100px" width="auto"/>
-        <span>Feyeboard - inloggen</span>
+        <span>Feyeboard - scores</span>
     </div>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row" style="margin-bottom:50px;">
         <div class="col-md-12">
             <?php
-            // Check if someone is logged in - check if session started
-            if(isset($_SESSION['id'])){
-                // if someone is logged in show welcome text with name of the logged in user
-                echo '<h2 style="margin-top:50px; margin-bottom: 30px;">Welkom '.$_SESSION['username'].'</h2>';
-            } else {
-                // If nobody is logged in show login and register text title
-                echo '<h4>Inloggen en registreren</h4><br/>
-	            <span>Log in of maak een account aan</span>';
-            }
-            ?>
-        </div>
-    </div>
-    <div class="row" style="margin-bottom:50px;">
-        <div class="col-md-6">
-            <h4>Registreren</h4>
-            <form action="" method="POST">
-                <input type="text" name="username" placeholder="Gebruikersnaam" class="login-form" ><br>
-                <?php
-                if (isset($error_username)) { ?>
-                    <div class="alert alert-danger" role="alert"><?= $error_username ?></div>
-                <?php } ?>
-                <input type="password" name="password" placeholder="Wachtwoord" class="login-form" required><br>
-                <input type="password" name="password-confirm" placeholder="Wachtwoord herhalen" class="login-form" required><br>
-                <?php
-                if (isset($error_pass)) { ?>
-                    <div class="alert alert-danger" role="alert"><?= $error_pass ?></div>
-                <?php } ?>
-                <?php
-                if (isset($error_match_pass)) { ?>
-                    <div class="alert alert-danger" role="alert"><?= $error_match_pass ?></div>
-                <?php } ?>
-                <button class="btn btn-custom" type="register" name="register">REGISTREREN</button>
-                <?php
-                if (isset($succes_register)) { ?>
-                    <div class="alert alert-success" role="alert"><?= $succes_register ?></div>
-                <?php } ?>
-                <?php
-                if (isset($error_register)) { ?>
-                    <div class="alert alert-danger" role="alert"><?= $error_register ?></div>
-                <?php } ?>
-            </form>
-        </div>
+            // Create instance of API class
+            $api = new FootballData();
+            // fetch and dump summary data for premier league' season 2015/16
+            $soccerseason = $api->getSoccerseasonById(398);
+            // search for desired team
+            $searchQuery = $api->searchTeam(urlencode("Feyenoord"));
 
-        <div class="col-md-6">
-            <h4>Inloggen</h4>
-            <form action="" method="POST">
-                <input type="text" name="username" placeholder="Gebruikersnaam" class="login-form" required><br>
-                <input type="password" name="password" placeholder="Wachtwoord" class="login-form" required><br>
-                <button class="btn btn-custom" type="submit" name="submit">INLOGGEN</button>
-                <?php
-                if (isset($error)) { ?>
-                    <div class="alert alert-danger" role="alert"><?= $error ?></div>
+            // var_dump searchQuery and inspect for results
+            $response = $api->getTeamById($searchQuery->teams[0]->id);
+            $fixtures = $response->getFixtures('')->fixtures;
+
+            ?>
+            <h4>Alle Feyenoord wedstrijden:</h4>
+            <table class="table table-striped">
+                <tr>
+                    <th>Thuis</th>
+                    <th></th>
+                    <th>Uit</th>
+                    <th colspan="3">Resultaat</th>
+                </tr>
+                <?php foreach ($fixtures as $fixture) { ?>
+                    <tr>
+                        <td><?php echo $fixture->homeTeamName; ?></td>
+                        <td>-</td>
+                        <td><?php echo $fixture->awayTeamName; ?></td>
+                        <td><?php echo $fixture->result->goalsHomeTeam; ?></td>
+                        <td>:</td>
+                        <td><?php echo $fixture->result->goalsAwayTeam; ?></td>
+                    </tr>
                 <?php } ?>
-            </form>
+            </table>
         </div>
     </div>
 </div>
@@ -236,8 +213,3 @@ if (isset($_POST['register']))
 
 </body>
 </html>
-
-
-
-
-

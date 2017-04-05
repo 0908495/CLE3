@@ -71,7 +71,7 @@ input[type="number"] {
     margin-bottom: 20px;
 }
 
-.footer {
+footer {
     background-image: url('../img/achtergrond_matchday_kuip_01.png');
     -webkit-background-size: cover;
     -moz-background-size: cover;

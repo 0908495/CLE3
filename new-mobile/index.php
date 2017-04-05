@@ -130,7 +130,7 @@ if (isset($_POST['submit']))
     </nav>
     <div class="col-md-12 head-title">
         <img src="img/fey-logo.png" class="logo" height="100px" width="auto"/>
-        <span>Feyeboard</span>
+        <span>Feyeboard - home</span>
     </div>
 </div>
 
@@ -138,7 +138,7 @@ if (isset($_POST['submit']))
     <div class="row">
         <div class="col-md-offset-2 col-md-8" style="text-align:center; margin-top: 50px; margin-bottom: 50px;">
             <h1>Support jouw team</h1>
-            <p style="margin-top: 20px; font-size: 18px;">Met deze website kan jij stemmen op het liedje waarmee jij jouw team support. Of voorspel wat de score wordt van de komende wedstrijd.</p>
+            <p style="margin-top: 20px;font-size: 18px;">Met deze website kan jij stemmen op het liedje waarmee jij jouw team support. Of voorspel wat de score wordt van de komende wedstrijd.</p>
         </div>
     </div>
     <div class="row">
@@ -216,7 +216,7 @@ if (isset($_POST['submit']))
 </div>
 </div>
 
-<div class="container-fluid footer">
+<footer>
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-10" style="text-align:center; margin-bottom: 50px; color:#fff;">
@@ -253,7 +253,7 @@ if (isset($_POST['submit']))
             </div>
         </div>
     </div>
-</div>
+</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 

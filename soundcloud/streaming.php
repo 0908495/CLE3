@@ -61,7 +61,7 @@ if($vibe == 'goed') {
         $_SESSION['track'] = $track;
     } else {
         // hand in hand
-        $track = 59500241;
+        $track = 20230709;
         $_SESSION['track'] = $track;
     }
 
@@ -86,7 +86,14 @@ $track = $_SESSION['track'];
     SC.stream('/tracks/' + <?= $track ?>).then(function(player){
         player.play();
         player.on('finish', function() {
-            console.log("Hoi");
+            SC.stream('/tracks/' + <?= $track ?>).then(function(player){
+                player.play();
+                player.on('finish', function() {
+                    console.log("Hoi");
+                });
+            }).catch(function(){
+                console.log(arguments);
+            });
         });
     }).catch(function(){
         console.log(arguments);
