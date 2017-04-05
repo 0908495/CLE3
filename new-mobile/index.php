@@ -138,7 +138,7 @@ if (isset($_POST['submit']))
     <div class="row">
         <div class="col-md-offset-2 col-md-8" style="text-align:center; margin-top: 50px; margin-bottom: 50px;">
             <h1>Support jouw team</h1>
-            <p style="margin-top: 20px; font-size: 18px;">Met deze website kan jij stemmen op het liedje waarmee jij jouw team support. Of voorspel wat de score wordt van de komende wedstrijd.</p>
+            <p style="margin-top: 20px;font-size: 18px;">Met deze website kan jij stemmen op het liedje waarmee jij jouw team support. Of voorspel wat de score wordt van de komende wedstrijd.</p>
         </div>
     </div>
     <div class="row">
