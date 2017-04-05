@@ -39,7 +39,7 @@ function playSomeSound(genre) {
         SC.oEmbed(tracks[random].uri, { autoplay: true}, document.getElementById('target'));
     });
 }
-var $elements = $('#picOne, #picTwo, #picThree, #picFour, #picFive, #picSix');
+var $elements = $('#picOne, #picTwo, #picThree, #picFour, #picFive, #picSix, #picSeven, #picEight, #picNine, #picTen');
 
 function anim_loop(index) {
     $elements.eq(index).fadeIn(2000, function() {
@@ -47,7 +47,7 @@ function anim_loop(index) {
         setTimeout(function() {
             $self.fadeOut(2000);
             anim_loop((index + 1) % $elements.length);
-        }, 1500);
+        }, 10000);
     });
 }
 
