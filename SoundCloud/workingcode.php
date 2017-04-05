@@ -11,6 +11,7 @@
                 reqwest({
                     url: 'streaming.php/',
                     success: nextSong
+                    //
                 });
             });
         }).catch(function(){
