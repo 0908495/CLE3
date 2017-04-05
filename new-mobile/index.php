@@ -203,7 +203,7 @@ if (isset($_POST['submit']))
                 <form action="" method="POST">
                     <input type="number" name="home" placeholder="Thuis">
                     <input type="number" name="away" placeholder="Uit"><br>
-                    <button class="btn btn-custom" type="submit" name="submit">submit</button>
+                    <button class="btn btn-custom" type="submit" name="submit" style="margin-top: 20px;">submit</button>
                 </form>
             </div>
         <?php } ?>
