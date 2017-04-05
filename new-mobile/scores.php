@@ -205,6 +205,9 @@ if (isset($_POST['register']))
                 <a class="twitter-timeline" data-height="500" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
                 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
+            <div class="col-md-4">
+                <iframe src="https://snapwidget.com/embed/362990" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;"></iframe>
+            </div>
         </div>
     </div>
 </footer>
