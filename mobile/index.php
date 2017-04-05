@@ -172,8 +172,6 @@ include 'FootballData.php';
                         </div>
                         <button class="btn btn-custom" type="submit" name="voteNegative">submit</button>
                     </form>
-
-
                 <?php
 
                 }

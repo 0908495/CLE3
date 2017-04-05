@@ -295,9 +295,14 @@ if (isset($_POST['submit']))
                 <a class="twitter-timeline" data-height="500" data-theme="light" href="https://twitter.com/Feyenoord">Tweets by Feyenoord</a>
                     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
+
+            <div class="col-md-4">
+            <iframe src="https://snapwidget.com/embed/361798" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; background-color:transparent; "></iframe>
+            </div>
         </div>
     </div>
 </footer>
+<script src="https://snapwidget.com/js/snapwidget.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 

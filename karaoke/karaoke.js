@@ -1,12 +1,12 @@
-var $elements = $('#picOne, #picTwo, #picThree, #picFour, #picFive, #picSix');
+var $elements = $('#picOne, #picTwo, #picThree, #picFour, #picFive, #picSix, #picSeven, #picEight, #picNine, #picTen');
 
 function anim_loop(index) {
     $elements.eq(index).fadeIn(2000, function() {
         var $self = $(this);
         setTimeout(function() {
-            $self.fadeOut(6000);
+            $self.fadeOut(2000);
             anim_loop((index + 1) % $elements.length);
-        }, 1500);
+        }, 100);
     });
 }
 

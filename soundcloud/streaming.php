@@ -57,14 +57,14 @@ if($vibe == 'goed') {
         $track = 98849365;
         $_SESSION['track'] = $track;
     } elseif ($row2['total2'] == (max($row1['total1'], $row2['total2'], $row3['total3']))) {
-        $track = 16266948;
+        $track = 123009620;
         $_SESSION['track'] = $track;
     } else {
         // hand in hand
-        $track = 20230709;
+        $track = 59500241;
         $_SESSION['track'] = $track;
     }
-
+// 59500241
 }
 
 $track = $_SESSION['track'];

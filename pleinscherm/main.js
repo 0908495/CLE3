@@ -47,7 +47,7 @@ function anim_loop(index) {
         setTimeout(function() {
             $self.fadeOut(2000);
             anim_loop((index + 1) % $elements.length);
-        }, 10000);
+        }, 17000);
     });
 }
 
