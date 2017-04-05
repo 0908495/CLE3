@@ -23,7 +23,7 @@ footer {
 
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 
-#picOne,#picTwo, #picThree, #picFour, #picFive, #picSix{
+#picOne,#picTwo, #picThree, #picFour, #picFive, #picSix, #picSeven, #picEight, #picNine, #picTen{
     display: none;
     position: absolute;
     margin-bottom: 10px;

@@ -96,22 +96,48 @@ include ("../soundcloud/streaming.php");
                         </div>
 
                     <div id="picFive">
+                        Hand in hand kameraden<br>
+                        Hand in hand voor Feyenoord 1<br>
+                        Geen woorden maar daden<br>
+                        Leve Feyenoord 1<br>
+                    </div>
+                    <div id="picSix">
+                        Hand in hand kameraden<br>
+                        Hand in hand voor Feyenoord 1<br>
+                        Geen woorden maar daden<br>
+                        Leve Feyenoord 1<br>
+                    </div>
+
+                    <div id="picSeven">
                         Wat een spanning wat een sfeer<br>
                         Kijk de bal<br>
                         Gaat langs de lijn<br>
                         Heel de Kuip gaat wild te keer<br>
-                        Moet een sprint van Van Persie zijn<br>
-                        Onze Bosvelt heel wat mans<br>
+                        bij een sprint van Coen Moulijn<br>
                     </div>
 
-                        <div id="picSix">
+                        <div id="picEight">
+                        Onze beertje heel wat mans<br>
                         Geeft een bal om niet te missen<br>
-                        Buffel kijk!<br>
-                        Daar komt je kans<br>
+                        Van der Gijp Daar komt je kans<br>
                         Laat de keeper nou eens vissen<br>
-                        Als het doelpunt word gescoord<br>
+                        Als een doelpunt word gescoord<br>
                         En dan brult heel Feyenoord<br>
                         </div>
+
+                    <div id="picNine">
+                        Hand in hand kameraden<br>
+                        Hand in hand voor Feyenoord 1<br>
+                        Geen woorden maar daden<br>
+                        Leve Feyenoord 1<br>
+                    </div>
+
+                    <div id="picTen">
+                        Hand in hand kameraden<br>
+                        Hand in hand voor Feyenoord 1<br>
+                        Geen woorden maar daden<br>
+                        Leve Feyenoord 1<br>
+                    </div>
                     </div>
 
                 </div>
