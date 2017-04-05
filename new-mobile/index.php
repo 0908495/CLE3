@@ -128,14 +128,10 @@ if (isset($_POST['submit']))
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
     </nav>
-
-
-
-            <div class="col-md-12 head-title">
-                <img src="img/fey-logo.png" class="logo" height="100px" width="auto"/>
-                <span>Feyeboard</span>
-            </div>
-
+    <div class="col-md-12 head-title">
+        <img src="img/fey-logo.png" class="logo" height="100px" width="auto"/>
+        <span>Feyeboard</span>
+    </div>
 </div>
 
 <div class="container">
@@ -192,7 +188,7 @@ if (isset($_POST['submit']))
             }
             ?>
         </div>
-
+        <?php if(isset($_SESSION['id'])){?>
         <div class="col-md-6">
             <h3 class="voting-titles">Voorspel de score</h3>
             <form action="" method="POST">
@@ -201,6 +197,16 @@ if (isset($_POST['submit']))
                 <button class="btn btn-custom" type="submit" name="submit">submit</button>
             </form>
         </div>
+        <?php } else { ?>
+            <div class="col-md-6">
+                <h3 class="voting-titles">Voorspel de score</h3>
+                <form action="" method="POST">
+                    <input type="number" name="home" placeholder="Thuis">
+                    <input type="number" name="away" placeholder="Uit"><br>
+                    <button class="btn btn-custom" type="submit" name="submit">submit</button>
+                </form>
+            </div>
+        <?php } ?>
     </div>
 </div>
 

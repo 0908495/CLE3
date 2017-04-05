@@ -94,12 +94,11 @@ include 'FootballData.php';
                             $_SESSION['vibe'] = $vibe;
                         }
                         ?>
-                        <h2>Winnaars</h2>
                         <table class="table">
 						<thead>
 							<tr>
 
-                                <th>mensje id</th>
+                                <th><h3>Winnaars met de juiste scores</h3></th>
 							</tr>
 						</thead>
 						<tbody>
