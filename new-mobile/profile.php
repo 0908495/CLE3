@@ -188,7 +188,7 @@ if (isset($_POST['register']))
 
 <div class="container-fluid quoteArea">
     <div class="container" style="text-align:center;">
-        <h2>"Lorem ipsum dolor sit amet, consectetuer adipiscing elit."</h2>
+        <h2>"Wie met Feyenoord is groot gebracht, is niet meer klein te krijgen."</h2>
     </div>
 </div>
 
